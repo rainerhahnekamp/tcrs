@@ -12,9 +12,9 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class Main {
 
-    public static void main(String[] args) {
-        LoggerFactory.getLogger("tcrs").debug("HELLO WORLD! DAS LOGGED!");
-        SpringApplication.run(Main.class);
-    }
+  public static void main(String[] args) {
+    LoggerFactory.getLogger("tcrs").debug("HELLO WORLD! DAS LOGGED!");
+    SpringApplication.run(Main.class);
+  }
 
 }

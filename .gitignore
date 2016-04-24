@@ -1,6 +1,9 @@
 .gradle
 build/
 gradle/
+src/main/webapp/jsp_packages/
+src/main/webapp/node_modules/
+src/main/webapp/typings/
 
 # Ignore Gradle GUI config
 gradle-app.setting

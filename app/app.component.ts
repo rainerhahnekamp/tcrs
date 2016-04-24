@@ -4,13 +4,13 @@ import {Component} from 'angular2/core';
   selector: 'my-app',
   template: `
     <h1>My First Angular 2 App</h1>
-    <div class="weeks">
-      <div class="week" *ngFor="#w of weekItems">
+    <div class="weeks row">
+      <div class="week col s1" *ngFor="#w of weekItems">
         <div class="header">{{w.name}}</div>
         <div class="days">
-          <div class="day" *ngFor="#d of w.days">
-            <div class="header">{{d.name}}</div>
-            <div class="timeUnits">
+          <div class="day row" *ngFor="#d of w.days">
+            <div class="header col s12">{{d.name}}</div>
+            <div class="timeUnits col s12">
               <div class="timeUnit" *ngFor="#u of d.timeUnits">
                 {{ u.content }}
               </div>

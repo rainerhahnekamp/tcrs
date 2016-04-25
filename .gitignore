@@ -4,6 +4,7 @@ gradle/
 jsp_packages/
 node_modules/
 typings/
+css/.sass-cache/
 
 # Ignore Gradle GUI config
 gradle-app.setting

@@ -19,5 +19,5 @@ gradle-app.setting
 
 **/*.js
 **/*.js.map
-**/*.css..map
+**/*.css.map
 **/*.css

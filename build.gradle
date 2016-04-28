@@ -34,7 +34,9 @@ dependencies {
 	compile('org.springframework.session:spring-session')
 	compile('org.springframework.boot:spring-boot-starter-social-facebook')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+  compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+  compile ('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 

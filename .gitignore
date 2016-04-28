@@ -3,6 +3,7 @@ build/
 gradle/
 jsp_packages/
 node_modules/
+jspm_packages/
 typings/
 .sass-cache/
 

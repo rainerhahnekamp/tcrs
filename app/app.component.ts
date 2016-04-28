@@ -4,8 +4,8 @@ import {Component} from 'angular2/core';
   selector: 'my-app',
   template: `
     <h1>My First Angular 2 App</h1>
-    <div class="weeks row">
-      <div class="week col s1" *ngFor="#w of weekItems">
+    <div class="weeks">
+      <div class="week col s1" *ngFor="#w of weeks">
         <div class="header">{{w.name}}</div>
         <div class="days">
           <div class="day row" *ngFor="#d of w.days">
@@ -23,7 +23,7 @@ import {Component} from 'angular2/core';
 })
 
 export class AppComponent {
-  weekItems = WEEKS;
+  weeks = WEEKS;
 }
 
 export class Week {

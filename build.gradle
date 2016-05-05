@@ -6,13 +6,13 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'tcrs'
@@ -30,12 +30,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-cache')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-devtools')
-	compile('org.projectlombok:lombok:1.16.6')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.session:spring-session')
 	compile('org.springframework.boot:spring-boot-starter-social-facebook')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+  compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+  compile ('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 

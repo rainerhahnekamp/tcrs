@@ -1,5 +1,19 @@
 {
-  "jspm": {},
+  "jspm": {
+    "registry": "npm",
+    "dependencies": {
+      "angular2": "^2.0.0-beta.17",
+      "es6-shim": "^0.35.0",
+      "jquery": "^2.2.3",
+      "materialize-css": "^0.97.6",
+      "reflect-metadata": "0.1.2",
+      "rxjs": "5.0.0-beta.6",
+      "zone.js": "0.6.12"
+    },
+    "devDependencies": {
+      "typescript": "^1.6.2"
+    }
+  },
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass-css\" ",
     "lite": "lite-server",
@@ -10,20 +24,18 @@
     "sass-css": "sass --watch css:css"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.15",
-    "materialize-css": "^0.97.6",
-    "systemjs": "0.19.26",
+    "angular2": "^2.0.0-beta.17",
     "es6-shim": "^0.35.0",
+    "jquery": "^2.2.3",
+    "materialize-css": "^0.97.6",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.10"
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
-    "jspm": "^0.16.31",
+    "jspm": "^0.16.34",
     "lite-server": "^2.2.0",
-    "node-sass": "^3.5.3",
-    "node-sass-import": "^1.0.0",
     "typescript": "^1.8.10",
     "typings": "^0.7.12"
   }

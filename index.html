@@ -2,11 +2,12 @@
 <head>
   <title>Angular 2 QuickStart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+  <link rel="stylesheet" href="jspm_packages/npm/materialize-css@0.97.6/bin/materialize.css">
   <link rel="stylesheet" href="css/tcrs.css">
 
   <!-- 1. Load libraries -->
   <!-- IE required polyfills, in this exact order -->
+  <!--
   <script src="node_modules/es6-shim/es6-shim.min.js"></script>
   <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
   <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
@@ -15,7 +16,12 @@
   <script src="node_modules/systemjs/dist/system.src.js"></script>
   <script src="node_modules/rxjs/bundles/Rx.js"></script>
   <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+  -->
+
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
 
   <!-- 2. Configure SystemJS -->
   <script>

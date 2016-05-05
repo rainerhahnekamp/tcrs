@@ -23,7 +23,28 @@ import {Component} from 'angular2/core';
 })
 
 export class AppComponent {
+  start: number = 8;
+  end: number = 20;
+
   weeks = WEEKS;
+  testWeek: Day[] = this.generateWeek(new Date(), new Date());
+
+  generateWeek(startDate: Date, endDate: Date) {
+    var returner: Day[];
+
+    return returner;
+  }
+
+  generateDay(start: number, end: number) {
+    var returner: TimeUnit[];
+
+    for (var i: number = start; i < end; i++) {
+      returner.push(new TimeUnit(i, i+1));
+    }
+
+    return returner;
+  }
+
 }
 
 export class Week {
@@ -44,11 +65,18 @@ export class Day {
 export class TimeUnit {
   id: number;
   content: string;
+  start: number;
+  end: number;
   length: number;
+
+  constructor (start : number, end : number) {
+    this.start = start;
+    this.end = end;
+  }
 }
 
 var TIMEUNITS: TimeUnit[] = [
-  { id: 1, content: "Heinz", length: 60 }
+  { id: 1, content: "Heinz", length: 60, start: 0, end: 0 }
 ];
 
 var DAYS: Day[] = [

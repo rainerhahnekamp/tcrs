@@ -21,8 +21,3 @@ gradle-app.setting
 .gradletasknamecache
 /tcrs.iml
 /.idea
-
-**/*.js
-**/*.js.map
-**/*.css.map
-**/*.css

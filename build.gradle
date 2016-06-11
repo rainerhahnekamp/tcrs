@@ -50,6 +50,15 @@ eclipse {
 	}
 }
 
+idea {
+  module {
+    downloadSources = true
+    excludeDirs += file("node_modules")
+    excludeDirs += file("bundle")
+    excludeDirs += file("src/main/webapp")
+  }
+}
+
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.9'
+	gradleVersion = '2.13'
 }

@@ -25,6 +25,10 @@ public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
   @Autowired
   private MongoTemplate mongoTemplate;
 
+  public void setMongoTemplate(MongoTemplate mongoTemplate) {
+    this.mongoTemplate = mongoTemplate;
+  }
+
   @Override public void onApplicationEvent(ContextRefreshedEvent cre) {
     Reservation reservation = new Reservation();
     Instant monday16 = ZonedDateTime.of(
@@ -32,7 +36,7 @@ public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
       ZoneId.of("Europe/Vienna")
     ).toInstant();
     reservation.setStartDatetime(monday16);
-    reservation.setHours(2L);
+    reservation.setHours(2);
     mongoTemplate.save(reservation);
   }
 

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class ReservationResponse {
   private String id;
   private Instant startDatetime;
-  private Long hours;
+  private int hours;
 
   public ReservationResponse(Reservation reservation) {
     this.id = reservation.getId();
@@ -27,7 +27,7 @@ public class ReservationResponse {
     return startDatetime;
   }
 
-  public Long getHours() {
+  public int getHours() {
     return hours;
   }
 }

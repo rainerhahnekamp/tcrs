@@ -13,7 +13,6 @@ import org.springframework.context.ApplicationContext;
 public class Main {
 
   public static void main(String[] args) {
-    LoggerFactory.getLogger("tcrs").debug("HELLO WORLD! DAS LOGGED!");
     SpringApplication.run(Main.class);
   }
 

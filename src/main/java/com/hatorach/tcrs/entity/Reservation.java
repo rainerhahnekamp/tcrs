@@ -11,7 +11,7 @@ public class Reservation {
   @Id
   private String id;
   private Instant startDatetime;
-  private Long hours;
+  private int hours;
 
   public String getId() {
     return id;
@@ -29,11 +29,11 @@ public class Reservation {
     this.startDatetime = startDatetime;
   }
 
-  public Long getHours() {
+  public int getHours() {
     return hours;
   }
 
-  public void setHours(Long hours) {
+  public void setHours(int hours) {
     this.hours = hours;
   }
 }

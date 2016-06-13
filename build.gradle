@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.3.4.RELEASE'
+		springBootVersion = '1.3.5.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -10,6 +10,8 @@ buildscript {
 	}
 }
 
+apply plugin: 'idea'
+apply plugin: 'jacoco'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
@@ -27,19 +29,20 @@ repositories {
 
 /* Es gibt keine Versionsangaben, da diese bereits im Parent POM.xml vom Spring verfuegbar sind */
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-cache')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-devtools')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.session:spring-session')
-	compile('org.springframework.boot:spring-boot-starter-social-facebook')
-	compile('org.springframework.boot:spring-boot-starter-web')
-  compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-  compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
-  compile('io.springfox:springfox-swagger2:2.2.2')
-  compile('io.springfox:springfox-swagger-ui:2.2.2')
+  compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+  compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+  compile 'io.springfox:springfox-swagger2:2.2.2'
+  compile 'io.springfox:springfox-swagger-ui:2.2.2'
+  compile 'org.springframework.boot:spring-boot-devtools'
+	compile 'org.springframework.boot:spring-boot-starter-cache'
+	compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile 'org.springframework.boot:spring-boot-starter-social-facebook'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+  compile 'org.springframework.session:spring-session'
 
-  testCompile('org.springframework.boot:spring-boot-starter-test')
+  testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
+  testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 
@@ -58,6 +61,13 @@ idea {
     excludeDirs += file("src/main/webapp")
   }
 }
+
+jacoco {
+  toolVersion = '0.7.6.201602180812'
+  reportsDir = file("$buildDir/reports/jacoco")
+}
+
+jacocoTestReport.dependsOn test
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.13'

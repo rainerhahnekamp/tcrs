@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  */
 public class ReservationAddRequest {
   private Instant startDatetime;
-  private Long hours;
+  private int hours;
 
   public Instant getStartDatetime() {
     return startDatetime;
@@ -19,11 +19,11 @@ public class ReservationAddRequest {
     this.startDatetime = startDatetime;
   }
 
-  public Long getHours() {
+  public int getHours() {
     return hours;
   }
 
-  public void setHours(Long hours) {
+  public void setHours(int hours) {
     this.hours = hours;
   }
 }

@@ -26,8 +26,12 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("reservation")
 public class ReservationController {
-  @Autowired
   private ReservationRepository reservationRepository;
+
+  @Autowired
+  public ReservationController(ReservationRepository reservationRepository) {
+    this.reservationRepository = reservationRepository;
+  }
 
   @RequestMapping(value = "add", method = RequestMethod.POST)
   public Boolean add(@RequestBody ReservationAddRequest reservationAddRequest) {

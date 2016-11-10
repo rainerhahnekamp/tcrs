@@ -1,32 +1,7 @@
 import { Component } from '@angular/core';
+import { MdButton } from "@angular/material";
+import {TimeUnit, Day, Week} from "./models";
 
-export class Week {
-  id: number;
-  name: string;
-  days: Day[];
-}
-
-export class Day {
-  id: number;
-  name: string;
-  start: string;
-  end: string;
-  type: string;
-  timeUnits: TimeUnit[];
-}
-
-export class TimeUnit {
-  id: number;
-  content: string;
-  start: number;
-  end: number;
-  length: number;
-
-  constructor (start : number, end : number) {
-    this.start = start;
-    this.end = end;
-  }
-}
 
 var TIMEUNITS: TimeUnit[] = [
   { id: 1, content: "Heinz", length: 60, start: 0, end: 0 }

@@ -39,7 +39,7 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-starter-social-facebook'
 	compile 'org.springframework.boot:spring-boot-starter-web'
-  compile 'org.springframework.session:spring-session'
+//  compile 'org.springframework.session:spring-session'
 
   testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
   testCompile 'org.springframework.boot:spring-boot-starter-test'

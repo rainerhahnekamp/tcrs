@@ -19,24 +19,19 @@ For running TCRS you require
 * Current version of Node.js
 * SASS Compiler
 
-Install jspm & gulp globally and local node modules by:
+Install angular-cli and the required node modules by
 
-    $ npm install -g jspm gulp
-    $ npm update
-
-### Prerequisites
-Next let jspm update system.js, install jspm dependencies and run a customized script that is a workaround for [issue 6012](https://github.com/Microsoft/TypeScript/issues/6012) of the TypeScript compiler
-
-    $ jspm update
-    $ ./node_modules/gulp/bin/gulp jspmFix
+    $ npm install -g angular-cli
+    $ npm install
 
 ### Run application
 Finally run
 
-    $ gulp
+    $ npm start
 
-which will compile all TypeScript and SASS files from app/src to bundle/src and links that directory to src/main/webapp where it is served from Spring.
-To start Spring you have to run in parallel to gulp:
+which will start `ng serve`.
+
+To start Spring you have to run in parallel to npm:
 
     $ ./gradlew bootRun
 

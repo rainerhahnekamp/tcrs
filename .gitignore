@@ -16,8 +16,13 @@ gradle-app.setting
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
+# e2e
+/e2e/*.js
+/e2e/*.map
+
 # Cache of project
 .gradletasknamecache
 /tcrs.iml
 /.idea
 /src/main/main.iml
+/gradle/

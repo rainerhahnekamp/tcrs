@@ -22,7 +22,8 @@ public class WebSecurityConfigTest {
   @Test
   public void configure() throws Exception {
     @SuppressWarnings("unchecked")
-    Map<Class<Object>, Object> map = (Map<Class<Object>, Object>) mock(Map.class);
+    Map<Class<? extends Object>, Object> map =
+      (Map<Class<? extends Object>, Object>) mock(Map.class);
 
     @SuppressWarnings("unchecked")
     ObjectPostProcessor<Object> objectPostProcessor =

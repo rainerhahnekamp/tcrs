@@ -40,6 +40,8 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-web'
 //  compile 'org.springframework.session:spring-session'
 
+  compileOnly "org.projectlombok:lombok:1.16.10"
+
   testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

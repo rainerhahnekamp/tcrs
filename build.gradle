@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.4.2.RELEASE'
+		springBootVersion = '1.5.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -57,7 +57,6 @@ eclipse {
 idea {
   module {
     downloadSources = true
-    excludeDirs += file("node_modules")
     excludeDirs += file("bundle")
     excludeDirs += file("src/main/webapp")
   }

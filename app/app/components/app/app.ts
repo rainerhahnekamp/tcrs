@@ -14,6 +14,8 @@ export class AppComponent {
   fromHour: number = 8;
   toHour: number = 20;
   startDay: Moment;
+  endDay: Moment;
+  weekName: string;
 
   days = [
     {name: "Mo"}, {name: "Di"}, {name: "Mi"}, {name: "Do"},
@@ -23,8 +25,8 @@ export class AppComponent {
 
   constructor() {
     this.startDay = moment().startOf("isoWeek");
+    this.endDay = moment(this.startDay).add(1, "week");
     this.cells = _.times((this.toHour - this.fromHour) * this.days.length);
-    console.log(this.cells);
   }
 
 }

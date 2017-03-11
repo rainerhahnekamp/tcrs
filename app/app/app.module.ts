@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from "@angular/material";
-
 import { AppComponent } from './components/app/app';
+import { CalendarNavigatorComponent } from './calendar-navigator/calendar-navigator.component';
 
 @NgModule({
   imports: [
@@ -13,7 +13,10 @@ import { AppComponent } from './components/app/app';
     HttpModule,
     MaterialModule.forRoot()
   ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, CalendarNavigatorComponent],
+  bootstrap: [AppComponent],
+  providers: [
+    {provide: LOCALE_ID, useValue: window.navigator.language}
+  ]
 })
 export class AppModule { }

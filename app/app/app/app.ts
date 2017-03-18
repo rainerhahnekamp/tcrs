@@ -20,7 +20,7 @@ export class AppComponent {
   days = [
     {name: "Mo"}, {name: "Di"}, {name: "Mi"}, {name: "Do"},
     {name: "Fr"}, {name: "Sa"}, {name: "So"}
-    ];
+  ];
   cells = [];
 
   constructor() {

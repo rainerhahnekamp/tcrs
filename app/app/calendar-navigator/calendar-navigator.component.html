@@ -1,10 +1,5 @@
 <div>
-  <span class="larger">larger&nbsp;</span>
-  <span>
-KW {{ weekName }}:
-{{ startDay.toDate() | date: 'shortDate' }} -
-{{ endDay.toDate() | date: 'shortDate' }}
-</span>
-  <md-icon>navigate_next</md-icon>
+  <md-icon class="clickable">navigate_before</md-icon>
+  <span>{{startDay.toDate() | date: 'shortDate' }} - {{ endDay.toDate() | date: 'shortDate' }}</span>
+  <md-icon class="clickable">navigate_next</md-icon>
 </div>
-

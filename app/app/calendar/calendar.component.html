@@ -1,13 +1,13 @@
-<div class="row">
-  <div class="top-first col">&nbsp;</div>
-  <div *ngFor="let day of days" class="col">
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
+  <div class="top-first col" fxFlex>&nbsp;</div>
+  <div *ngFor="let day of days" class="col" fxFlex>
     {{day.name}}
   </div>
 </div>
 
-<div *ngFor="let hour of hours" class="row">
-  <div class="hour">{{hour}}:00 - {{hour + 1}}:00</div>
-  <div *ngFor="let day of days">
+<div *ngFor="let hour of hours" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
+  <div class="hour" fxFlex>{{hour}}:00 - {{hour + 1}}:00</div>
+  <div *ngFor="let day of days" fxFlex>
     <button *ngFor="let place of places" md-raised-button>{{place}}</button>
   </div>
 </div>

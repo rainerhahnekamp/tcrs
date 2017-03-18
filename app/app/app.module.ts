@@ -6,10 +6,12 @@ import { MaterialModule } from "@angular/material";
 import { AppComponent } from './app/app';
 import { CalendarNavigatorComponent } from './calendar-navigator/calendar-navigator.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot()

@@ -6,7 +6,7 @@ import {Moment} from "moment";
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'app',
   templateUrl: './app.html',
   styleUrls: ['./app.sass']
 })

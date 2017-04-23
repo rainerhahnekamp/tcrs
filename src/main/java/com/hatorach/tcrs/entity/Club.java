@@ -1,16 +1,19 @@
 package com.hatorach.tcrs.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import java.time.Instant;
 
 /**
- * Created by rainerh on 24.04.16.
+ * Created by rainerh on 23.04.17.
  */
 @Data
-public class Reservation {
+@Builder
+public class Club {
   @Id
   private String id;
-  private Instant startDatetime;
-  private int hours;
+
+  private String url;
+
+  private String name;
 }

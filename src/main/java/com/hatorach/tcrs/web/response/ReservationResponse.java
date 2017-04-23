@@ -1,6 +1,7 @@
 package com.hatorach.tcrs.web.response;
 
 import com.hatorach.tcrs.entity.Reservation;
+import lombok.Data;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 /**
  * Created by rainerh on 25.04.16.
  */
+@Data
 public class ReservationResponse {
   private String id;
   private Instant startDatetime;
@@ -17,17 +19,5 @@ public class ReservationResponse {
     this.id = reservation.getId();
     this.startDatetime = reservation.getStartDatetime();
     this.hours = reservation.getHours();
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public Instant getStartDatetime() {
-    return startDatetime;
-  }
-
-  public int getHours() {
-    return hours;
   }
 }

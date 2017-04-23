@@ -2,6 +2,7 @@ package com.hatorach.tcrs.dev;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.hatorach.tcrs.entity.Reservation;
@@ -19,6 +20,6 @@ public class FixturizerTest {
     fixturizer.setMongoTemplate(mongoTemplate);
 
     fixturizer.onApplicationEvent(null);
-    verify(mongoTemplate).save(any(Reservation.class));
+    verify(mongoTemplate, times(3)).save(any(Reservation.class));
   }
 }

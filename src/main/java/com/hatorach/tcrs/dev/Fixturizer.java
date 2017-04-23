@@ -1,5 +1,6 @@
 package com.hatorach.tcrs.dev;
 
+import com.hatorach.tcrs.entity.Club;
 import com.hatorach.tcrs.entity.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -38,6 +39,12 @@ public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
     reservation.setStartDatetime(monday16);
     reservation.setHours(2);
     mongoTemplate.save(reservation);
+
+
+    Club tcGeorgeTown = Club.builder().name("TC GeorgeTown").url("tc-georg-town").build();
+    Club askoIronCity = Club.builder().name("ASKO IronCity").url("asko-iron-city").build();
+    mongoTemplate.save(tcGeorgeTown);
+    mongoTemplate.save(askoIronCity);
   }
 
 }

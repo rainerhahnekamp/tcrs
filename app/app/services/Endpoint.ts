@@ -3,7 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export default class Endpoint {
+export class Endpoint {
   constructor(private http: Http) {
 
   }

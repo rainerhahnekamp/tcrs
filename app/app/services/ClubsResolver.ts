@@ -1,11 +1,14 @@
+/**
+ * retrieves information about the existing clubs in the system for the enduser.
+ */
+
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {ClubInfo, ClubsBroker} from "./ClubsBroker";
 
 @Injectable()
-export default class ClubsResolver implements Resolve<Array<ClubInfo>> {
+export class ClubsResolver implements Resolve<Array<ClubInfo>> {
   constructor(private clubsBroker: ClubsBroker) {
 
   }

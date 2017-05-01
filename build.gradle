@@ -32,7 +32,6 @@ repositories {
 	mavenCentral()
 }
 
-/* Es gibt keine Versionsangaben, da diese bereits im Parent POM.xml vom Spring verfuegbar sind */
 dependencies {
   compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
   compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
@@ -42,8 +41,9 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-devtools'
 	compile 'org.springframework.boot:spring-boot-starter-cache'
 	compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	compile 'org.springframework.boot:spring-boot-starter-security'
+  compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-starter-web'
+  compile 'org.springframework.security.oauth:spring-security-oauth2'
 //  compile 'org.springframework.session:spring-session'
 
   compileOnly "org.projectlombok:lombok:1.16.10"

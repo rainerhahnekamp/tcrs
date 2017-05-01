@@ -11,9 +11,11 @@ import {RouterModule} from "@angular/router";
 import routes from "./routes";
 import RootComponent from "./root/RootComponent";
 import ClubSelectorComponent from "./clubSelection/ClubSelectionComponent";
-import ClubsResolver from "./services/ClubsResolver";
 import {ClubsBroker} from "./services/ClubsBroker";
-import Endpoint from "./services/Endpoint";
+import {ClubsResolver} from "./services/ClubsResolver";
+import {Endpoint} from "./services/Endpoint";
+import LoginComponent from "./login/LoginComponent";
+import {UserService} from "./services/UserService";
 
 @NgModule({
   imports: [
@@ -26,13 +28,14 @@ import Endpoint from "./services/Endpoint";
   ],
   declarations: [
     AppComponent, RootComponent, ClubSelectorComponent, CalendarNavigatorComponent,
-    CalendarComponent],
+    CalendarComponent, LoginComponent],
   bootstrap: [AppComponent],
   providers: [
     {provide: LOCALE_ID, useValue: window.navigator.language},
     ClubsResolver,
     ClubsBroker,
-    Endpoint
+    Endpoint,
+    UserService
   ]
 })
 export class AppModule { }

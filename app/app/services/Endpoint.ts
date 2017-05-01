@@ -9,7 +9,7 @@ export class Endpoint {
   }
 
   get<T>(url: string): Observable<T> {
-    return this.http.get("http://localhost:8080/" + url)
+    return this.http.get("/api/" + url)
       .map((response: Response) => response.json());
   }
 }

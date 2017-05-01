@@ -4,7 +4,7 @@ import RootComponent from "./root/RootComponent";
 import {ClubsResolver} from "./services/ClubsResolver";
 import ClubSelectorComponent from "./clubSelection/ClubSelectionComponent";
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: "club-selection", component: ClubSelectorComponent,
     resolve: {clubs: ClubsResolver}},
   {path: ":club", component: RootComponent, children: [
@@ -13,4 +13,4 @@ const routes: Routes = [
   {path: "", redirectTo: "club-selection", pathMatch: "full"}
 ];
 
-export default routes;
+

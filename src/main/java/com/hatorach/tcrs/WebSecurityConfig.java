@@ -38,14 +38,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+    // @formatter:off
     http
-      .antMatcher("/**").authorizeRequests()
-      .antMatchers("/", "/login**").permitAll().anyRequest()
-      .authenticated().and().exceptionHandling()
-      .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/")).and().logout()
-      .logoutSuccessUrl("/").permitAll().and().csrf()
-      .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
-      .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+      .authorizeRequests()
+        .antMatchers("/", "/login**", "/user").permitAll()
+        .anyRequest().authenticated()
+      .and().logout().logoutSuccessUrl("/").permitAll()
+      .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+      .and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+    // @formatter:on
   }
 
   @Bean

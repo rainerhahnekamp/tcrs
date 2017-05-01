@@ -8,7 +8,6 @@ import {CalendarNavigatorComponent} from "./calendar-navigator/calendar-navigato
 import {CalendarComponent} from "./calendar/calendar.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
-import routes from "./routes";
 import RootComponent from "./root/RootComponent";
 import ClubSelectorComponent from "./clubSelection/ClubSelectionComponent";
 import {ClubsBroker} from "./services/ClubsBroker";
@@ -16,6 +15,7 @@ import {ClubsResolver} from "./services/ClubsResolver";
 import {Endpoint} from "./services/Endpoint";
 import LoginComponent from "./login/LoginComponent";
 import {UserService} from "./services/UserService";
+import {routes} from "./routes";
 
 @NgModule({
   imports: [

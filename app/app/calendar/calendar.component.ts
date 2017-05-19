@@ -34,7 +34,7 @@ export class CalendarComponent implements OnInit {
   }
 
   setReservation(place, hour) {
-    r: Reservation = new Reservation("2", 1400000000, 1);
+    let r: Reservation = new Reservation("2", 1400000000, 1);
     this.endpoint.post('registration/add', r);
   }
 

@@ -114,9 +114,9 @@
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.0.2.tgz#bce01526917a5b49606fc7e81600af85b15846ea"
 
-"@angular/router@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.0.2.tgz#e574ee2ce31035c6e574acf28ed9a28bfe1179ef"
+"@angular/router@^4.0.3":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.1.1.tgz#0a7ce03065197982786782cf5429fa6f0c0300fa"
 
 "@angular/tsc-wrapped@4.0.2":
   version "4.0.2"
@@ -141,7 +141,7 @@
   version "2.5.38"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.38.tgz#a4379124c4921d4e21de54ec74669c9e9b356717"
 
-"@types/lodash@4.15.501":
+"@types/lodash@4.14.50":
   version "4.14.50"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.50.tgz#2227da4d65fafe249bccd59c7b9396e27674c8f7"
 

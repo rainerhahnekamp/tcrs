@@ -41,11 +41,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // @formatter:off
     http
       .authorizeRequests()
-        .antMatchers("/", "/login**", "/user").permitAll()
-        .anyRequest().authenticated()
+        .antMatchers("/", "/login**", "/user", "/clubs/**").permitAll()
+        .anyRequest().permitAll()
       .and().logout().logoutSuccessUrl("/").permitAll()
-      .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-      .and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+      .and().csrf().disable();
+      //.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+      //.and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     // @formatter:on
   }
 

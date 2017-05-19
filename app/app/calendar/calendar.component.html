@@ -4,14 +4,18 @@
     <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="top-first cell" fxFlex="auto">&nbsp;</div>
       <div *ngFor="let day of days" class="cell" fxFlex="13">
-        {{day.name}}
+        <div>{{day.name}}</div>
+        <div fxLayout="row">
+          <div *ngFor="let place of places" fxFlex fxFill>{{place}}</div>
+        </div>
       </div>
+
     </div>
 
     <div *ngFor="let hour of hours" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="hour cell" fxFlex="auto">{{hour}}:00 - {{hour + 1}}:00</div>
       <div *ngFor="let day of days" fxFlex="13" class="places cell" fxLayout="row" fxLayoutAlign="center center">
-        <a *ngFor="let place of places" fxFlex>{{place}}</a>
+        <a *ngFor="let place of places" fxFlex (click)="setRegistration(place,hour)">{{ place }}</a>
       </div>
     </div>
   </div>

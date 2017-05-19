@@ -1,1 +1,2 @@
-<a href="http://localhost:8080/login/facebook">Login: {{ user }}</a>
+<a [hidden]="username" href="/api/login/facebook">Login</a>
+<span [hidden]="!username">{{username}}: <a class="link" (click)="logout()">Logout</a></span>

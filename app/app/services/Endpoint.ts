@@ -10,12 +10,19 @@ export class Endpoint {
 
   get<T>(url: string): Observable<T> {
     return this.http.get("/api/" + url)
-      .map((response: Response) => response.json());
+      .map(this.parseResponse);
   }
 
-  post(url: string, data) {
-    let headers = new Headers({ 'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers});
-    return this.http.post("/api/" + url, data, options);
+  post<T>(url: string, body: any = {}): Observable<T> {
+    return this.http.post("/api/" + url, body).map(this.parseResponse);
   }
-}
+
+  private parseResponse(response: Response) {
+    if (response.text()) {
+      return response.json();
+    }
+    else {
+      return null;
+    }
+  }
+ }

@@ -13,4 +13,8 @@ export class UserService {
   getUser() {
     return this.endpoint.get("user");
   }
+
+  logout() {
+    return this.endpoint.post("logout");
+  }
 }

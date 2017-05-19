@@ -15,7 +15,8 @@
     <div *ngFor="let hour of hours" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="hour cell" fxFlex="auto">{{hour}}:00 - {{hour + 1}}:00</div>
       <div *ngFor="let day of days" fxFlex="13" class="places cell" fxLayout="row" fxLayoutAlign="center center">
-        <a *ngFor="let place of places" fxFlex (click)="setRegistration(place,hour)">{{ place }}</a>
+        <a *ngFor="let place of places" class="link" fxFlex
+           (click)="setReservation(place, hour)">{{ place }}</a>
       </div>
     </div>
   </div>

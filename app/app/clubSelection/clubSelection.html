@@ -1,1 +1,3 @@
-<p *ngFor="let club of clubs">{{club.name}}</p>
+<p *ngFor="let club of clubs">
+  <a [routerLink]="['/', club.url, 'calendar']">{{club.name}}</a>
+</p>

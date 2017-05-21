@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterRegistration;
@@ -31,61 +32,21 @@ import javax.servlet.FilterRegistration;
 
 @Configuration
 @EnableWebSecurity
-@EnableOAuth2Client
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-  @Autowired
-  private OAuth2ClientContext oauth2ClientContext;
-
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     // @formatter:off
     http
       .authorizeRequests()
-        .antMatchers("/", "/login**", "/user", "/clubs/**").permitAll()
-        .anyRequest().permitAll()
-      .and().logout().logoutSuccessUrl("/").permitAll()
+        .antMatchers("/", "/login**", "/user", "/clubs/**", "/reservation/**").permitAll()
+        .anyRequest().authenticated()
+      .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
       .and().csrf().disable();
-      //.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-      //.and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     // @formatter:on
   }
 
   @Bean
   public Module timeModule() {
     return new JavaTimeModule();
-  }
-
-  @Bean
-  @ConfigurationProperties("facebook.client")
-  public AuthorizationCodeResourceDetails facebook() {
-    return new AuthorizationCodeResourceDetails();
-  }
-
-  @Bean
-  @ConfigurationProperties("facebook.resource")
-  public ResourceServerProperties facebookResources() {
-    return new ResourceServerProperties();
-  }
-
-  @Bean
-  public FilterRegistrationBean oauth2ClientFilterRegistration(
-    OAuth2ClientContextFilter filter) {
-    FilterRegistrationBean registration = new FilterRegistrationBean();
-    registration.setFilter(filter);
-    registration.setOrder(-100);
-    return registration;
-  }
-
-  private Filter ssoFilter() {
-    OAuth2ClientAuthenticationProcessingFilter facebookFilter =
-      new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
-    OAuth2RestTemplate facebookTemplate =
-      new OAuth2RestTemplate(facebook(), oauth2ClientContext);
-    facebookFilter.setRestTemplate(facebookTemplate);
-    UserInfoTokenServices tokenServices = new UserInfoTokenServices(
-      facebookResources().getUserInfoUri(), facebook().getClientId());
-    tokenServices.setRestTemplate(facebookTemplate);
-    facebookFilter.setTokenServices(tokenServices);
-    return facebookFilter;
   }
 }

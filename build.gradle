@@ -73,7 +73,7 @@ task wrapper(type: Wrapper) {
 
 sonarqube {
   properties {
-    property 'sonar.projectKey', 'com.hatorach:tcrs'
+    property 'sonar.projectKey', 'com.hatorach.tcrs'
     property 'sonar.projectName', 'TCRS'
   }
 }

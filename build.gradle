@@ -70,3 +70,10 @@ jacocoTestReport.dependsOn test
 task wrapper(type: Wrapper) {
 	gradleVersion = '3.1'
 }
+
+sonarqube {
+  properties {
+    property 'sonar.projectKey', 'com.hatorach:tcrs'
+    property 'sonar.projectName', 'TCRS'
+  }
+}

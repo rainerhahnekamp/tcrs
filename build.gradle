@@ -1,19 +1,22 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+  ext {
+    springBootVersion = '1.5.3.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath('cz.habarta.typescript-generator:typescript-generator-gradle-plugin:1.25.322')
+
+  }
 }
 
 plugins {
   id "org.sonarqube" version "2.2"
 }
 
+apply plugin: 'cz.habarta.typescript-generator'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
 apply plugin: 'java'
@@ -22,15 +25,31 @@ apply plugin: 'org.sonarqube'
 apply plugin: 'org.springframework.boot'
 
 jar {
-	baseName = 'tcrs'
-	version = '0.0.1-SNAPSHOT'
+  baseName = 'tcrs'
+  version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
+
+generateTypeScript {
+  jsonLibrary = 'jackson2'
+  classPatterns = [
+    'com.hatorach.**.web.**.*Request',
+    'com.hatorach.**.web.**.*Response',
+  ]
+  customTypeMappings = [
+    'java.time.Instant:Date'
+  ]
+  outputFile = 'app/endpoints.d.ts'
+  outputKind = 'ambientModule'
+  module = 'endpoints'
+//  mapPackagesToNamespaces = true
+}
+bootRun.dependsOn 'generateTypeScript'
 
 dependencies {
   compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
@@ -39,10 +58,10 @@ dependencies {
   compile 'io.springfox:springfox-swagger-ui:2.2.2'
   compile 'org.modelmapper:modelmapper:0.7.5'
   compile 'org.springframework.boot:spring-boot-devtools'
-	compile 'org.springframework.boot:spring-boot-starter-cache'
-	compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+  compile 'org.springframework.boot:spring-boot-starter-cache'
+  compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
   compile 'org.springframework.boot:spring-boot-starter-security'
-	compile 'org.springframework.boot:spring-boot-starter-web'
+  compile 'org.springframework.boot:spring-boot-starter-web'
 //  compile 'org.springframework.session:spring-session'
 
   compileOnly "org.projectlombok:lombok:1.16.10"
@@ -50,7 +69,6 @@ dependencies {
   testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
-
 
 idea {
   module {
@@ -68,7 +86,7 @@ jacoco {
 jacocoTestReport.dependsOn test
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '3.1'
+  gradleVersion = '3.1'
 }
 
 sonarqube {

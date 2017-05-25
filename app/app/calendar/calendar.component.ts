@@ -3,6 +3,7 @@ import * as moment from "moment";
 import {Moment} from "moment";
 import * as _ from "lodash";
 import {Endpoint} from '../services/Endpoint';
+import {ReservationAddRequest, ReservationResponse} from "endpoints";
 
 @Component({
   selector: 'calendar',
@@ -34,13 +35,13 @@ export class CalendarComponent implements OnInit {
   }
 
   setReservation(place, hour) {
-    let r: Reservation = new Reservation("2", 1400000000, 1);
+    let r: ReservationAddRequest = {startDatetime: new Date(), hours: 1};
     this.endpoint.post('registration/add', r);
   }
 
   getReservation() {
     let queryStr = '?from=2016-04-29&to=2016-05-01';
-    return this.endpoint.get<Reservation[]>('/reservation/find' + queryStr).subscribe(
+    return this.endpoint.get<ReservationResponse[]>('/reservation/find' + queryStr).subscribe(
       reservations => {
         this.reservations = reservations;
       }
@@ -48,14 +49,8 @@ export class CalendarComponent implements OnInit {
   }
 }
 
-export class Reservation {
+export interface Reservation {
   id: string;
-  startDatetime: number;
+  startDatetime: Date;
   hours: number;
-
-  constructor(id: string, startDatetime: number, hours: number) {
-    this.id = id;
-    this.startDatetime = startDatetime;
-    this.hours = hours;
-  };
 }

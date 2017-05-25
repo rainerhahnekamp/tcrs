@@ -5,16 +5,17 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {Observable} from "rxjs/Observable";
-import {ClubInfo, ClubsBroker} from "./ClubsBroker";
+import {ClubsBroker} from "./ClubsBroker";
+import {ClubsListResponse} from "endpoints";
 
 @Injectable()
-export class ClubsResolver implements Resolve<Array<ClubInfo>> {
+export class ClubsResolver implements Resolve<Array<ClubsListResponse>> {
   constructor(private clubsBroker: ClubsBroker) {
 
   }
 
   resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<Array<ClubInfo>> {
+          state: RouterStateSnapshot): Observable<Array<ClubsListResponse>> {
     return this.clubsBroker.findAll();
   }
 }

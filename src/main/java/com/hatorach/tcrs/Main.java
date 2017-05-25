@@ -1,6 +1,7 @@
 package com.hatorach.tcrs;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
@@ -14,7 +15,9 @@ import org.springframework.context.ApplicationContext;
 public class Main {
 
   public static void main(String[] args) {
-    SpringApplication.run(Main.class);
+    SpringApplication application = new SpringApplication(Main.class);
+    application.setBannerMode(Banner.Mode.OFF);
+    application.run();
   }
 
 }

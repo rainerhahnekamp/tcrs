@@ -16,10 +16,17 @@ import {Endpoint} from "./services/Endpoint";
 import LoginComponent from "./login/LoginComponent";
 import {UserService} from "./services/UserService";
 import {routes} from "./routes";
+import {AngularFireModule} from "angularfire2";
+import {AngularFireAuthModule} from "angularfire2/auth";
 
 @NgModule({
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyDEKMK7Rm1Tp8DELVWOSzGNC7s1o23jS80",
+      authDomain: "tcrs-dev.firebaseapp.com"
+    }),
+    AngularFireAuthModule,
     FlexLayoutModule,
     FormsModule,
     HttpModule,

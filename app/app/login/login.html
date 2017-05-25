@@ -1,2 +1,2 @@
-<a [hidden]="username" href="/api/login/facebook">Login</a>
+<a [hidden]="username" class="link" (click)="login()">Login</a>
 <span [hidden]="!username">{{username}}: <a class="link" (click)="logout()">Logout</a></span>

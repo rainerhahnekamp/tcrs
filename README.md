@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hatorach/tcrs.svg?branch=master)](https://travis-ci.org/hatorach/tcrs)
+
 # TCRS - Tennis Court Reservation System
 This is a web-based reservation system for tennis courts.
 

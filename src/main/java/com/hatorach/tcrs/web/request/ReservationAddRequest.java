@@ -11,4 +11,5 @@ import java.time.Instant;
 public class ReservationAddRequest {
   private Instant startDatetime;
   private int hours;
+  xxx
 }

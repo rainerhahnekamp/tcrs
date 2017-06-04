@@ -2,7 +2,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {LOCALE_ID, NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
-import {MaterialModule} from "@angular/material";
+import {MaterialModule, DateAdapter, MD_DATE_FORMATS} from "@angular/material";
 import {AppComponent} from "./app/app";
 import {CalendarNavigatorComponent} from "./calendar-navigator/calendar-navigator.component";
 import {CalendarComponent} from "./calendar/calendar.component";
@@ -18,6 +18,7 @@ import {UserService} from "./services/UserService";
 import {routes} from "./routes";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import {MomentDateAdapter, MOMENT_DATE_FORMATS} from "./services/MomentDateAdapter";
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     FlexLayoutModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [
@@ -42,7 +43,9 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     ClubsResolver,
     ClubsBroker,
     Endpoint,
-    UserService
+    UserService,
+    {provide: DateAdapter, useClass: MomentDateAdapter},
+    {provide: MD_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS}
   ]
 })
 export class AppModule { }

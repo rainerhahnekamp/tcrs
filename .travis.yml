@@ -13,6 +13,7 @@ before_script:
   - npm install -g @angular/cli@1.0.0
 
 script:
+  - java -version
   - ./gradlew sonarqube
   - ng lint
 

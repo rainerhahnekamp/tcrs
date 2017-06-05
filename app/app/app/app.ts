@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { MdButton } from "@angular/material";
-import * as _ from "lodash";
-import * as moment from "moment";
-import {Moment} from "moment";
+import {Component} from "@angular/core";
+import {UserService} from "../services/UserService";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,22 +9,15 @@ import {Moment} from "moment";
   styleUrls: ['./app.sass']
 })
 export class AppComponent {
-  fromHour: number = 8;
-  toHour: number = 20;
-  startDay: Moment;
-  endDay: Moment;
-  weekName: string;
+  public isLoggedIn: boolean = false;
 
-  days = [
-    {name: "Mo"}, {name: "Di"}, {name: "Mi"}, {name: "Do"},
-    {name: "Fr"}, {name: "Sa"}, {name: "So"}
-  ];
-  cells = [];
-
-  constructor() {
-    this.startDay = moment().startOf("isoWeek");
-    this.endDay = moment(this.startDay).add(1, "week");
-    this.cells = _.times((this.toHour - this.fromHour) * this.days.length);
+  constructor(private userService: UserService, private router: Router) {
+    this.userService.getObservable().subscribe(
+      userInfo => this.isLoggedIn = userInfo.isLoggedIn
+    );
   }
 
+  logout() {
+    this.userService.logout().then(() => this.router.navigate([""]));
+  }
 }

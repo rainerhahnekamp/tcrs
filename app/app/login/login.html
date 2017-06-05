@@ -1,2 +1,31 @@
-<a [hidden]="username" class="link" (click)="login()">Login</a>
-<span [hidden]="!username">{{username}}: <a class="link" (click)="logout()">Logout</a></span>
+<div class="login">
+  <md-card>
+    <md-card-header>
+      Login
+    </md-card-header>
+    <md-card-content>
+      <form>
+        <div fxLayout="column">
+          <md-input-container>
+            <input mdInput type="text" ng-model="email" placeholder="EMail" required>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput type="password" ng-model="password" placeholder="Password" required>
+          </md-input-container>
+          <button type="button" md-raised-button>OK</button>
+        </div>
+      </form>
+
+      <div class="reset-password">
+        <a routerLink="reset-password">Passwort vergessen?</a>
+      </div>
+
+      <hr>
+
+      <div class="social-buttons">
+        <a md-raised-button (click)="loginGoogle()">Login with Google</a>
+        <a md-raised-button (click)="loginFacebook()">Login with Facebook</a>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>

@@ -1,7 +1,16 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" class="main-toolbar">
   <span>TCRS</span>
   <span class="fill-remaining-space"></span>
-  <login></login>
+  <button [hidden]="!isLoggedIn" md-icon-button [mdMenuTriggerFor]="accountMenu">
+    <md-icon>account_circle</md-icon>
+  </button>
+  <md-menu #accountMenu="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item (click)="logout()">
+      <span>Logout</span>
+    </button>
+  </md-menu>
+
+  <a [hidden]="isLoggedIn" routerLink="login">Login</a>
 </md-toolbar>
 
 <router-outlet></router-outlet>

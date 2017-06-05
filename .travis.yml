@@ -6,8 +6,10 @@ addons:
     token:
       secure: 4e891e5de78c822bce4d9c2da399fcb017183316
 
+before_install:
+  - sudo apt-get install oracle-java8-set-default
+
 before_script:
-  - apt-get install oracle-java8-set-default
   - echo $JAVA_HOME
   - npm install -g @angular/cli@1.0.0
   - ./gradlew assemble

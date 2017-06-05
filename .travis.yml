@@ -8,6 +8,7 @@ addons:
 
 before_install:
   - sudo apt-get install oracle-java8-set-default
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 before_script:
   - echo $JAVA_HOME

@@ -8,8 +8,12 @@ addons:
     token:
       secure: 4e891e5de78c822bce4d9c2da399fcb017183316
 
+before_script:
+  - npm install -g angular-cli@1.0.0
+
 script:
   - ./gradlew sonarqube
+  - ng lint
 
 cache:
   directories:
@@ -17,3 +21,5 @@ cache:
     - '$HOME/.sonar/cache'
     - '$HOME/.gradle'
     - '.gradle'
+    - 'node_modules'
+  yarn: true

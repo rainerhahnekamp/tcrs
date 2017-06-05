@@ -1,12 +1,13 @@
-language: java
-jdk:
-  - oraclejdk8
+language: node_js
 
 addons:
   sonarqube:
     organization: rainerhahnekamp-github
     token:
       secure: 4e891e5de78c822bce4d9c2da399fcb017183316
+  apt:
+    packages:
+      - oracle-java8-set-default
 
 before_script:
   - npm install -g @angular/cli@1.0.0

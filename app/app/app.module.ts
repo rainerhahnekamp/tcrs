@@ -2,7 +2,15 @@ import {BrowserModule} from "@angular/platform-browser";
 import {LOCALE_ID, NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
-import {DateAdapter, MaterialModule, MD_DATE_FORMATS} from "@angular/material";
+import {
+  DateAdapter,
+  MD_DATE_FORMATS,
+  MdButtonModule,
+  MdDatepickerModule,
+  MdInputModule,
+  MdMenuModule,
+  MdToolbarModule
+} from "@angular/material";
 import {AppComponent} from "./app/app";
 import {CalendarNavigatorComponent} from "./calendar-navigator/calendar-navigator.component";
 import {CalendarComponent} from "./calendar/calendar.component";
@@ -36,7 +44,7 @@ import {Ng2MDFValidationMessagesModule} from "ng2-mdf-validation-messages";
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterialModule,
+    MdButtonModule, MdMenuModule, MdDatepickerModule, MdInputModule, MdToolbarModule,
     Ng2MDFValidationMessagesModule,
     RouterModule.forRoot(routes)
   ],

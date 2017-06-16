@@ -22,6 +22,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MOMENT_DATE_FORMATS, MomentDateAdapter} from "./services/MomentDateAdapter";
 import WelcomeComponent from "./welcome/WelcomeComponent";
 import RegistrationComponent from "./registration/RegistrationComponent";
+import {Ng2MDFValidationMessagesModule} from "ng2-mdf-validation-messages";
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import RegistrationComponent from "./registration/RegistrationComponent";
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
+    Ng2MDFValidationMessagesModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [

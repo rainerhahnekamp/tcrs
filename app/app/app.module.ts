@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {LOCALE_ID, NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {DateAdapter, MaterialModule, MD_DATE_FORMATS} from "@angular/material";
 import {AppComponent} from "./app/app";
@@ -21,6 +21,7 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MOMENT_DATE_FORMATS, MomentDateAdapter} from "./services/MomentDateAdapter";
 import WelcomeComponent from "./welcome/WelcomeComponent";
+import RegistrationComponent from "./registration/RegistrationComponent";
 
 @NgModule({
   imports: [
@@ -32,14 +33,14 @@ import WelcomeComponent from "./welcome/WelcomeComponent";
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MaterialModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [
     AppComponent, RootComponent, ClubSelectorComponent, CalendarNavigatorComponent,
-    CalendarComponent, LoginComponent, WelcomeComponent],
+    CalendarComponent, LoginComponent, RegistrationComponent, WelcomeComponent],
   bootstrap: [AppComponent],
   providers: [
     {provide: LOCALE_ID, useValue: window.navigator.language},

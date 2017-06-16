@@ -1,18 +1,18 @@
-<div class="login">
+<div class="form">
   <md-card>
     <md-card-header>
       Login
     </md-card-header>
     <md-card-content>
-      <form>
+      <form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
         <div fxLayout="column">
           <md-input-container>
-            <input mdInput type="text" ng-model="email" placeholder="EMail" required>
+            <input mdInput type="text" formControlName="email" placeholder="EMail">
           </md-input-container>
           <md-input-container>
-            <input mdInput type="password" ng-model="password" placeholder="Password" required>
+            <input mdInput type="password" formControlName="password" placeholder="Password">
           </md-input-container>
-          <button type="button" md-raised-button>OK</button>
+          <button type="submit" md-raised-button>OK</button>
         </div>
       </form>
 

@@ -6,17 +6,25 @@
         <br><a routerLink="/login">Login with your existing Facebook or Google Account.</a></p>
       <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
         <div fxLayout="column">
+
           <md-input-container>
             <input mdInput formControlName="email" placeholder="EMail">
+            <md-error *ngIf="email.hasError('email')">Invalid email format</md-error>
           </md-input-container>
+
+
           <md-input-container>
             <input mdInput type="password" formControlName="password"
                    placeholder="Password">
+            <md-error *ngIf="password.hasError('required')">This field is required</md-error>
           </md-input-container>
+
           <md-input-container>
             <input mdInput type="password" formControlName="passwordConfirmation"
                    placeholder="Confirm password">
+            <md-error *ngIf="passwordConfirmation.hasError('required')">This field is required</md-error>
           </md-input-container>
+
           <button type="submit" md-raised-button>OK</button>
         </div>
       </form>

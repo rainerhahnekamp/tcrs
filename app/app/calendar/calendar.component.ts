@@ -25,9 +25,8 @@ export class CalendarComponent implements OnInit {
   ];
   places: Array<number> = [1, 2, 3];
   hours: Array<number> = [];
-  reservations: Array<Reservation> = [];
+  reservations: Array<ReservationResponse> = [];
   isMobile = false;
-
 
   ngOnInit() {
     this.generateDays();
@@ -38,10 +37,12 @@ export class CalendarComponent implements OnInit {
   }
 
   generateDays() {
+    let now = moment().weekday(1);
+    console.log(now);
     if (!this.isMobile) {
     } else {
       this.startDay = moment().startOf("isoWeek");
-      this.endDay = moment(this.startDay).add(1, "week");
+      this.endDay = moment(this.startDay).add(1, "week")
     }
   }
 
@@ -50,8 +51,9 @@ export class CalendarComponent implements OnInit {
     console.log(tmpDate);
   }
 
-  setReservation(hour) {
-    console.log(this.startDay);
+  setReservation(day, hour) {
+    console.log(day);
+    console.log(hour);
     let r: ReservationAddRequest = {startDatetime: new Date(), hours: 1};
     this.endpoint.post('registration/add', r);
   }

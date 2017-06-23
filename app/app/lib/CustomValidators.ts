@@ -1,4 +1,4 @@
-import {FormGroup, ValidatorFn} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn} from "@angular/forms";
 
 export default class CustomValidators {
   static confirmPassword(namePassword1: string = "password",
@@ -14,5 +14,18 @@ export default class CustomValidators {
         passwordConfirmation.setErrors({passwordConfirmation: "Password doesn't match"});
       }
     };
+  }
+
+  static passwordComplexity(passwordControl: FormControl): {[key: string]: any} {
+    if (passwordControl.errors && passwordControl.errors["minlength"]) {
+      console.log(passwordControl.errors.minlength);
+    }
+    let password = passwordControl.value;
+    if (password.match(/[0-9]/) && password.match(/[a-zA-Z]/)) {
+      return null;
+    }
+    else {
+      return {passwordComplexity: "The password must contain at least one number and letter"};
+    }
   }
 }

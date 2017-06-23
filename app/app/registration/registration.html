@@ -16,13 +16,15 @@
           <md-input-container>
             <input mdInput type="password" formControlName="password"
                    placeholder="Password">
-            <md-error *ngIf="password.hasError('required')">This field is required</md-error>
+            <md-error *ngIf="password.hasError('minlength')">This field requires at least 8 characters</md-error>
+            <md-error *ngIf="password.hasError('passwordComplexity')">The password must contain at least one number and one letter</md-error>
+
           </md-input-container>
 
           <md-input-container>
             <input mdInput type="password" formControlName="passwordConfirmation"
                    placeholder="Confirm password">
-            <md-error *ngIf="passwordConfirmation.hasError('required')">This field is required</md-error>
+            <md-error *ngIf="passwordConfirmation.hasError('passwordConfirmation')">Passwords do not match</md-error>
           </md-input-container>
 
           <button type="submit" md-raised-button>OK</button>

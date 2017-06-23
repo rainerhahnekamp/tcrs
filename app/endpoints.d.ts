@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.25.322 on 2017-06-23 14:57:47.
+// Generated using typescript-generator version 1.25.322 on 2017-06-23 14:17:38.
 
 declare module "endpoints" {
 

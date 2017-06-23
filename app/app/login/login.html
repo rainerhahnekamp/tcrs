@@ -8,9 +8,11 @@
         <div fxLayout="column">
           <md-input-container>
             <input mdInput type="text" formControlName="email" placeholder="EMail">
+            <md-error *ngIf="email.hasError('email')">Invalid EMail format</md-error>
           </md-input-container>
           <md-input-container>
             <input mdInput type="password" formControlName="password" placeholder="Password">
+            <md-error *ngIf="password.hasError('required')">This field is required</md-error>
           </md-input-container>
           <button type="submit" md-raised-button>OK</button>
         </div>

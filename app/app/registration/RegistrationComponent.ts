@@ -1,0 +1,38 @@
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import CustomValidators from "../lib/CustomValidators";
+
+@Component({
+  templateUrl: "registration.html"
+})
+export default class RegistrationComponent implements OnInit {
+  form: FormGroup;
+  email: FormControl;
+  password: FormControl;
+  passwordConfirmation: FormControl;
+
+  constructor(private formBuilder: FormBuilder) {
+
+  }
+
+  ngOnInit() {
+    this.email = this.formBuilder.control("", Validators.email);
+    this.password = this.formBuilder.control("", Validators.required);
+    this.passwordConfirmation = this.formBuilder.control("", Validators.required);
+    this.form = this.formBuilder.group({
+      email: this.email,
+      password: ["", Validators.required],
+      passwordConfirmation: ["", Validators.required]
+    }, {
+      validator: CustomValidators.confirmPassword()
+    });
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log("form valid");
+    }
+  }
+
+
+}

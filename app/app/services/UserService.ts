@@ -56,9 +56,13 @@ export class UserService {
     return this.observable;
   }
 
-  login(loginProvider: LoginProvider) {
+  loginThirdParty(loginProvider: LoginProvider) {
     let provider = this.getLoginProvider(loginProvider);
     this.angularFireAuth.auth.signInWithPopup(provider);
+  }
+
+  login(email: string, password: string) {
+    this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
   logout() {

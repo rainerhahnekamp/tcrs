@@ -10,7 +10,9 @@
     </button>
   </md-menu>
 
-  <a [hidden]="isLoggedIn" routerLink="login">Login</a>
+  <div [hidden]="isLoggedIn">
+  <a routerLink="/login">Login</a>&nbsp;|&nbsp;<a routerLink="registration">Register</a>
+  </div>
 </md-toolbar>
 
 <router-outlet></router-outlet>

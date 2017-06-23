@@ -2,7 +2,6 @@ import {Component} from "@angular/core";
 import {UserService} from "../services/UserService";
 import {Router} from "@angular/router";
 
-
 @Component({
   selector: 'app',
   templateUrl: './app.html',

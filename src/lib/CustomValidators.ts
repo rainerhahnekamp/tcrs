@@ -1,4 +1,4 @@
-import {FormControl, FormGroup, ValidatorFn} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 
 export default class CustomValidators {
   static confirmPassword(namePassword1: string = 'password',

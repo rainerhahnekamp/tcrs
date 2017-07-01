@@ -1,9 +1,9 @@
 /**
  * Created by chjtom on 02.06.17.
  */
-import {DateAdapter, MdDateFormats} from "@angular/material";
-import * as moment from "moment";
-import {isMoment, Moment} from "moment";
+import {DateAdapter, MdDateFormats} from '@angular/material';
+import * as moment from 'moment';
+import {isMoment, Moment} from 'moment';
 
 export const MOMENT_DATE_FORMATS: MdDateFormats = {
   parse: {

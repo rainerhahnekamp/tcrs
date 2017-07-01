@@ -1,10 +1,10 @@
-import {Endpoint} from "./endpoint.service";
-import {Injectable} from "@angular/core";
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import {Observable} from "rxjs/Observable";
-import {AngularFireAuth} from "angularfire2/auth";
-import {Router} from "@angular/router";
+import {Endpoint} from './endpoint.service';
+import {Injectable} from '@angular/core';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import {Observable} from 'rxjs/Observable';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {Router} from '@angular/router';
 import AuthProvider = firebase.auth.AuthProvider;
 /**
  * Main service method for fetching data about the current logged in user.

@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {ClubsListResponse} from "endpoints";
-import {Endpoint} from "./endpoint.service";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {ClubsListResponse} from 'endpoints';
+import {Endpoint} from './endpoint.service';
 
 
 @Injectable()

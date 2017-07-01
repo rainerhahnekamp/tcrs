@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {LoginProvider, UserService} from "../services/user-service.service";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoginProvider, UserService} from '../services/user-service.service';
 
 interface LoginData {
   username: string;

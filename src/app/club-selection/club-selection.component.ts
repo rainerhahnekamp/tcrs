@@ -1,6 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {ClubsListResponse} from "endpoints";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ClubsListResponse} from 'endpoints';
 
 @Component({
   templateUrl: 'club-selection.html'

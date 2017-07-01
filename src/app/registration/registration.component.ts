@@ -1,6 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import CustomValidators from "../../lib/CustomValidators";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import CustomValidators from '../../lib/CustomValidators';
 
 @Component({
   templateUrl: 'registration.component.html'

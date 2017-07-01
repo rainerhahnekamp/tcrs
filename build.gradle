@@ -1,3 +1,6 @@
+import java.util.regex.Pattern
+import java.util.stream.Collectors
+
 buildscript {
   ext {
     springBootVersion = '1.5.3.RELEASE'
@@ -47,7 +50,6 @@ generateTypeScript {
   outputFile = 'app/endpoints.d.ts'
   outputKind = 'ambientModule'
   module = 'endpoints'
-//  mapPackagesToNamespaces = true
 }
 bootRun.dependsOn 'generateTypeScript'
 
@@ -89,9 +91,23 @@ task wrapper(type: Wrapper) {
   gradleVersion = '3.1'
 }
 
+def fetchIgnoreInTestCoverageFiles = { List<Pattern> ignoreInTestCoverageFlags ->
+  def lengthCwd = projectDir.getAbsolutePath().length()
+
+  def containsFlag = { File file ->
+    ignoreInTestCoverageFlags.stream().filter({(file.text =~ it).find()}).findFirst().isPresent()
+  }
+
+  sourceSets.main.allJava.files.stream()
+    .filter(containsFlag)
+    .map({it.getAbsolutePath().substring(lengthCwd + 1)})
+    .collect(Collectors.toList())
+}
+
 sonarqube {
   properties {
     property 'sonar.projectKey', 'com.hatorach.tcrs'
     property 'sonar.projectName', 'TCRS'
+    property 'sonar.exclusions', fetchIgnoreInTestCoverageFiles([/@IgnoreInTestCoverage/, /@Data/])
   }
 }

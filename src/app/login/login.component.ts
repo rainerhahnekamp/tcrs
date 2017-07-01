@@ -1,16 +1,16 @@
 import {Component, OnInit} from "@angular/core";
-import {LoginProvider, UserService} from "../services/UserService";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {LoginProvider, UserService} from "../services/user-service.service";
 
 interface LoginData {
-  username: string,
-  password: string
+  username: string;
+  password: string;
 }
 
 @Component({
-  templateUrl: "login.html",
-  styleUrls: ['./LoginComponent.sass']
+  templateUrl: 'login.component.html',
+  styleUrls: ['./login.component.sass']
 })
 export default class LoginComponent implements OnInit {
   public username: string;
@@ -24,11 +24,11 @@ export default class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.email = this.formBuilder.control("", Validators.email);
-    this.password = this.formBuilder.control("", Validators.required);
+    this.email = this.formBuilder.control('', Validators.email);
+    this.password = this.formBuilder.control('', Validators.required);
     this.formGroup = this.formBuilder.group({
-      email: ["", Validators.email],
-      password: ["", Validators.required]
+      email: ['', Validators.email],
+      password: ['', Validators.required]
     });
   }
 
@@ -37,7 +37,7 @@ export default class LoginComponent implements OnInit {
   }
 
   loginFacebook() {
-    this.userService.loginThirdParty(LoginProvider.FACEBOOK)
+    this.userService.loginThirdParty(LoginProvider.FACEBOOK);
   }
 
   onSubmit() {

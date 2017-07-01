@@ -5,8 +5,8 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {Observable} from "rxjs/Observable";
-import {ClubsBroker} from "./ClubsBroker";
 import {ClubsListResponse} from "endpoints";
+import {ClubsBroker} from "./club-broker.service";
 
 @Injectable()
 export class ClubsResolver implements Resolve<Array<ClubsListResponse>> {

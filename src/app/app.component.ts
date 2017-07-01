@@ -1,14 +1,14 @@
 import {Component} from "@angular/core";
-import {UserService} from "../services/UserService";
+import {UserService} from "./services/user-service.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app',
+  selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['./app.sass']
 })
 export class AppComponent {
-  public isLoggedIn: boolean = false;
+  public isLoggedIn = false;
 
   constructor(private userService: UserService, private router: Router) {
     this.userService.getObservable().subscribe(
@@ -17,6 +17,6 @@ export class AppComponent {
   }
 
   logout() {
-    this.userService.logout().then(() => this.router.navigate([""]));
+    this.userService.logout().then(() => this.router.navigate(['']));
   }
 }

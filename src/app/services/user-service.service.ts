@@ -1,4 +1,4 @@
-import {Endpoint} from "./Endpoint";
+import {Endpoint} from "./endpoint.service";
 import {Injectable} from "@angular/core";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -18,14 +18,14 @@ export enum LoginProvider {
 }
 
 export interface UserInfo {
-  name: string,
-  isLoggedIn: boolean
+  name: string;
+  isLoggedIn: boolean;
 }
 
 @Injectable()
 export class UserService {
   private observable: Observable<UserInfo>;
-  private isUserInfoAvailable: boolean = false;
+  private isUserInfoAvailable = false;
   private user: UserInfo;
 
   constructor(private endpoint: Endpoint, private angularFireAuth: AngularFireAuth,
@@ -34,14 +34,13 @@ export class UserService {
       this.angularFireAuth.authState.subscribe(user => {
         if (user) {
           this.user = {name: user.displayName, isLoggedIn: true};
-        }
-        else {
-          this.user = {name: "", isLoggedIn: false};
+        } else {
+          this.user = {name: '', isLoggedIn: false};
         }
         observable.next(this.user);
 
         if (this.isUserInfoAvailable && this.user.isLoggedIn) {
-          this.router.navigate(["/welcome"])
+          this.router.navigate(['/welcome']);
         }
         this.isUserInfoAvailable = true;
       });
@@ -57,7 +56,7 @@ export class UserService {
   }
 
   loginThirdParty(loginProvider: LoginProvider) {
-    let provider = this.getLoginProvider(loginProvider);
+    const provider = this.getLoginProvider(loginProvider);
     this.angularFireAuth.auth.signInWithPopup(provider);
   }
 
@@ -71,20 +70,20 @@ export class UserService {
 
   private getLoginProvider(loginProvider: LoginProvider): AuthProvider {
     let returner = null;
-    switch(loginProvider) {
+    switch (loginProvider) {
       case LoginProvider.DEFAULT:
         returner = new firebase.auth.EmailAuthProvider();
         return returner;
       case LoginProvider.GOOGLE:
         returner = new firebase.auth.GoogleAuthProvider();
-        returner.addScope("https://www.googleapis.com/auth/contacts.readonly");
+        returner.addScope('https://www.googleapis.com/auth/contacts.readonly');
         return returner;
       case LoginProvider.FACEBOOK:
         returner = new firebase.auth.FacebookAuthProvider();
-        returner.addScope("public_profile");
+        returner.addScope('public_profile');
         return returner;
       default:
-        throw new Error("invalid login provider: " + loginProvider);
+        throw new Error('invalid login provider: ' + loginProvider);
     }
   }
 }

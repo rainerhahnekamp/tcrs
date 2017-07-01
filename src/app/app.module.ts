@@ -11,32 +11,31 @@ import {
   MdMenuModule,
   MdToolbarModule
 } from "@angular/material";
-import {AppComponent} from "./app/app";
-import {CalendarNavigatorComponent} from "./calendar-navigator/calendar-navigator.component";
+import {AppComponent} from "./app.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
-import RootComponent from "./root/RootComponent";
-import ClubSelectorComponent from "./clubSelection/ClubSelectionComponent";
-import {ClubsBroker} from "./services/ClubsBroker";
-import {ClubsResolver} from "./services/ClubsResolver";
-import {Endpoint} from "./services/Endpoint";
-import LoginComponent from "./login/LoginComponent";
-import {UserService} from "./services/UserService";
+import {ClubsBroker} from "./services/club-broker.service";
+import {ClubsResolver} from "./services/club-resolver.service";
+import {Endpoint} from "./services/endpoint.service";
+import {UserService} from "./services/user-service.service";
 import {routes} from "./routes";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MOMENT_DATE_FORMATS, MomentDateAdapter} from "./services/MomentDateAdapter";
-import WelcomeComponent from "./welcome/WelcomeComponent";
-import RegistrationComponent from "./registration/RegistrationComponent";
+import RootComponent from "./root/root.component";
+import ClubSelectorComponent from "./club-selection/club-selection.component";
+import LoginComponent from "./login/login.component";
+import RegistrationComponent from "./registration/registration.component";
+import WelcomeComponent from "./welcome/welcome.component";
 
 @NgModule({
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp({
-      apiKey: "AIzaSyDEKMK7Rm1Tp8DELVWOSzGNC7s1o23jS80",
-      authDomain: "tcrs-dev.firebaseapp.com"
+      apiKey: 'AIzaSyDEKMK7Rm1Tp8DELVWOSzGNC7s1o23jS80',
+      authDomain: 'tcrs-dev.firebaseapp.com'
     }),
     AngularFireAuthModule,
     BrowserAnimationsModule,
@@ -47,8 +46,8 @@ import RegistrationComponent from "./registration/RegistrationComponent";
     RouterModule.forRoot(routes)
   ],
   declarations: [
-    AppComponent, RootComponent, ClubSelectorComponent, CalendarNavigatorComponent,
-    CalendarComponent, LoginComponent, RegistrationComponent, WelcomeComponent],
+    AppComponent, RootComponent, ClubSelectorComponent, CalendarComponent, LoginComponent,
+    RegistrationComponent, WelcomeComponent],
   bootstrap: [AppComponent],
   providers: [
     {provide: LOCALE_ID, useValue: window.navigator.language},

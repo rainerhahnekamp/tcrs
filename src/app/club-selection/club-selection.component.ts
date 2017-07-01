@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ClubsListResponse} from "endpoints";
 
 @Component({
-  templateUrl: "clubSelection.html"
+  templateUrl: 'club-selection.html'
 })
 export default class ClubSelectorComponent implements OnInit {
   private clubs: Array<ClubsListResponse>;
@@ -13,6 +13,6 @@ export default class ClubSelectorComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data: {clubs: Array<ClubsListResponse>}) => {
       this.clubs = data.clubs;
-    })
+    });
   }
 }

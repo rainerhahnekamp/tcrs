@@ -9,19 +9,18 @@ export class Endpoint {
   }
 
   get<T>(url: string): Observable<T> {
-    return this.http.get("/api/" + url)
+    return this.http.get('/api/' + url)
       .map(this.parseResponse);
   }
 
   post<T>(url: string, body: any = {}): Observable<T> {
-    return this.http.post("/api/" + url, body).map(this.parseResponse);
+    return this.http.post('/api/' + url, body).map(this.parseResponse);
   }
 
   private parseResponse(response: Response) {
     if (response.text()) {
       return response.json();
-    }
-    else {
+    } else {
       return null;
     }
   }

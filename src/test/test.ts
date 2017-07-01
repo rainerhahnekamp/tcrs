@@ -16,7 +16,7 @@ import {
 declare var __karma__: any;
 declare var require: any;
 
-console.log("I am here");
+console.log('I am here');
 
 // Prevent Karma from running prematurely.
 __karma__.loaded = function () {};

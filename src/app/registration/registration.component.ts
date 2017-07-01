@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import CustomValidators from "../lib/CustomValidators";
+import CustomValidators from "../../lib/CustomValidators";
 
 @Component({
-  templateUrl: "registration.html"
+  templateUrl: 'registration.component.html'
 })
 export default class RegistrationComponent implements OnInit {
   form: FormGroup;
@@ -16,10 +16,10 @@ export default class RegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.email = this.formBuilder.control("", Validators.email);
-    this.password = this.formBuilder.control("", Validators.compose(
+    this.email = this.formBuilder.control('', Validators.email);
+    this.password = this.formBuilder.control('', Validators.compose(
       [Validators.minLength(8), CustomValidators.passwordComplexity]));
-    this.passwordConfirmation = this.formBuilder.control("");
+    this.passwordConfirmation = this.formBuilder.control('');
     this.form = this.formBuilder.group({
       email: this.email,
       password: this.password,
@@ -31,7 +31,7 @@ export default class RegistrationComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log("form valid");
+      console.log('form valid');
     }
   }
 }

@@ -19,11 +19,11 @@ plugins {
   id "org.sonarqube" version "2.2"
 }
 
+apply plugin: 'checkstyle'
 apply plugin: 'cz.habarta.typescript-generator'
-apply plugin: 'idea'
-apply plugin: 'jacoco'
-apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
 apply plugin: 'org.sonarqube'
 apply plugin: 'org.springframework.boot'
 
@@ -79,13 +79,6 @@ idea {
     excludeDirs += file("src/main/webapp")
   }
 }
-
-jacoco {
-  toolVersion = '0.7.6.201602180812'
-  reportsDir = file("$buildDir/reports/jacoco")
-}
-
-jacocoTestReport.dependsOn test
 
 task wrapper(type: Wrapper) {
   gradleVersion = '3.1'

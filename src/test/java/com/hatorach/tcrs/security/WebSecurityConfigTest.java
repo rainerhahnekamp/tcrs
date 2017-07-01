@@ -1,4 +1,4 @@
-package com.hatorach.tcrs;
+package com.hatorach.tcrs.security;
 
 import static org.mockito.Mockito.mock;
 
@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import java.util.HashMap;
+
 import java.util.Map;
 
 /**

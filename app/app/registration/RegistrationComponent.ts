@@ -34,6 +34,4 @@ export default class RegistrationComponent implements OnInit {
       console.log("form valid");
     }
   }
-
-
 }

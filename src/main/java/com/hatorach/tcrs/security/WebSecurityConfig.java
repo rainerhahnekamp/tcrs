@@ -1,4 +1,4 @@
-package com.hatorach.tcrs;
+package com.hatorach.tcrs.security;
 
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

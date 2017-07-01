@@ -14,6 +14,9 @@ import java.util.Optional;
  */
 @Configuration
 public class SecurityConfig {
+  /**
+   * returns anonymous wrapper of the MongoDB Repository.
+   */
   @Bean
   public UserFinder getUserFind(UserRepository userRepository) {
     return new UserFinder() {
@@ -24,6 +27,9 @@ public class SecurityConfig {
     };
   }
 
+  /**
+   * returns anonymous wrapper of the MongoDB Repository.
+   */
   @Bean
   public UserPersister getUserPersister(UserRepository userRepository) {
     return new UserPersister() {

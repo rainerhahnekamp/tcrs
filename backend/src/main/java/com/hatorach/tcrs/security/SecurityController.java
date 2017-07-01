@@ -15,6 +15,9 @@ public class SecurityController {
   private RegistrationService registrationService;
 
 
+  /**
+   * endpoint for the initial registration with email/password.
+   */
   @RequestMapping(name = "register")
   public boolean register(@RequestBody RegistrationRequest registrationRequest) {
     registrationService.register(

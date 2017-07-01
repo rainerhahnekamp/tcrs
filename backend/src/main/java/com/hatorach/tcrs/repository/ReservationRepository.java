@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface ReservationRepository extends CrudRepository<Reservation, String> {
   List<Reservation> findAll();
+
   List<Reservation> findByStartDatetimeBetween(Instant from, Instant to);
 }

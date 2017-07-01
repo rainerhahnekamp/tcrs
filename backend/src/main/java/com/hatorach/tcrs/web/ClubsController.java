@@ -23,6 +23,9 @@ public class ClubsController {
     this.modelMapper = modelMapper;
   }
 
+  /**
+   * returns all existing clubs.
+   */
   @RequestMapping("list")
   public List<ClubsListResponse> list() {
     return clubRepository.findAll().stream()

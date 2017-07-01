@@ -19,7 +19,7 @@ import java.time.ZonedDateTime;
 /**
  * Created by rainerh on 24.04.16.
  *
- * adds fixture for development mode
+ * <p>adds fixture for development mode
  */
 @Service
 public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {

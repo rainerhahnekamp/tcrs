@@ -16,6 +16,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+  /**
+   * configures Spring Security.
+   */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     // @formatter:off
@@ -23,7 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests()
         .antMatchers("/", "/login**", "/user", "/clubs/**", "/reservation/**").permitAll()
         .anyRequest().authenticated()
-      .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
+      .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        .logoutSuccessUrl("/").permitAll()
       .and().csrf().disable();
     // @formatter:on
   }

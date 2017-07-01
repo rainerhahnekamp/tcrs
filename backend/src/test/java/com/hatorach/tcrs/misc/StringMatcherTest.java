@@ -10,7 +10,7 @@ import org.junit.Test;
 public class StringMatcherTest {
   @Test
   public void testPartial() {
-    assertTrue(StringMatcher.matches("b", "abc"));
+    assertTrue(StringMatcher.matchesPartially("b", "abc"));
   }
 
   @Test

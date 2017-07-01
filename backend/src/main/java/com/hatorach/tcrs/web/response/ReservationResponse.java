@@ -1,6 +1,5 @@
 package com.hatorach.tcrs.web.response;
 
-import com.hatorach.tcrs.entity.Reservation;
 import lombok.Data;
 
 import java.time.Instant;
@@ -13,10 +12,4 @@ public class ReservationResponse {
   private String id;
   private Instant startDatetime;
   private int hours;
-
-  public ReservationResponse(Reservation reservation) {
-    this.id = reservation.getId();
-    this.startDatetime = reservation.getStartDatetime();
-    this.hours = reservation.getHours();
-  }
 }

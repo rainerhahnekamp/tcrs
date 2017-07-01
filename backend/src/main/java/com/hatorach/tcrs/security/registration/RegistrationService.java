@@ -12,12 +12,19 @@ public class RegistrationService {
   private UserPersister userPersister;
   private UserFinder userFinder;
 
-  public RegistrationService(PasswordCheck passwordCheck, UserPersister userPersister, UserFinder userFinder) {
+  /**
+   * constructor.
+   */
+  public RegistrationService(PasswordCheck passwordCheck, UserPersister userPersister,
+                             UserFinder userFinder) {
     this.passwordCheck = passwordCheck;
     this.userPersister = userPersister;
     this.userFinder = userFinder;
   }
 
+  /**
+   * main orchestrator method that handles the registration process by email/password.
+   */
   public boolean register(String email, String password, String passwordConfirmation) {
     if (!passwordCheck.allowPassword(password, passwordConfirmation)) {
       return false;

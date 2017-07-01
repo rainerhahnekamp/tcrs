@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PasswordCheck {
+  /**
+   * Checks if the passwords meets the formal requirements.
+   */
   public boolean allowPassword(String password, String passwordConfirmation) {
     if (!password.equals(passwordConfirmation)) {
       throw new RuntimeException("passwords do not match");
@@ -17,8 +20,8 @@ public class PasswordCheck {
       throw new RuntimeException("password is too short");
     }
 
-    boolean hasChar = StringMatcher.matches("[a-zA-Z]", password);
-    boolean hasNumber = StringMatcher.matches("[0-9]", password);
+    boolean hasChar = StringMatcher.matchesPartially("[a-zA-Z]", password);
+    boolean hasNumber = StringMatcher.matchesPartially("[0-9]", password);
     if (!hasChar || !hasNumber) {
       throw new RuntimeException("password does not meet the complexity requirements");
     }

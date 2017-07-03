@@ -2,3 +2,8 @@ logging:
   level:
     org.springframework.security: DEBUG
 
+mail:
+  smtpServer: localhost
+  login: none
+  password: none
+  defaultSender: someemail@somehost.com

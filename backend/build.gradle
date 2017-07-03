@@ -47,7 +47,7 @@ generateTypeScript {
   customTypeMappings = [
     'java.time.Instant:Date'
   ]
-  outputFile = '../app/endpoints.d.ts'
+  outputFile = '../src/endpoints.d.ts'
   outputKind = 'ambientModule'
   module = 'endpoints'
 }

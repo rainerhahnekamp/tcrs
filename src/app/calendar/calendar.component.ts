@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import * as moment from 'moment';
-import {Moment} from 'moment';
-import * as _ from 'lodash';
-import {ReservationAddRequest, ReservationResponse} from 'endpoints';
-import {Endpoint} from '../services/endpoint.service';
+import {Component, OnInit} from "@angular/core";
+import * as moment from "moment";
+import {Moment} from "moment";
+import * as _ from "lodash";
+import {ReservationResponse} from "endpoints";
+import {Endpoint} from "../services/endpoint.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UrlService} from "../services/url.service";
 
 @Component({
   templateUrl: './calendar.component.html',
@@ -14,16 +16,14 @@ export class CalendarComponent implements OnInit {
   toHour = 20;
   startDay: Moment;
   endDay: Moment;
-  days = [
-    {name: 'Mo'}, {name: 'Di'}, {name: 'Mi'}, {name: 'Do'},
-    {name: 'Fr'}, {name: 'Sa'}, {name: 'So'}
-  ];
+  days = [];
   places: Array<number> = [1, 2, 3];
   hours: Array<number> = [];
   reservations: Array<ReservationResponse> = [];
   isMobile = false;
 
-  constructor(private endpoint: Endpoint) {};
+  constructor(private endpoint: Endpoint, private router: Router,
+              private activatedRoute: ActivatedRoute, private urlService: UrlService) {};
 
   ngOnInit() {
     this.generateDays();
@@ -34,10 +34,12 @@ export class CalendarComponent implements OnInit {
   }
 
   generateDays() {
-    if (!this.isMobile) {
-    } else {
-      this.startDay = moment().startOf('isoWeek');
-      this.endDay = moment(this.startDay).add(1, 'week');
+    this.startDay = moment().startOf('isoWeek');
+    this.endDay = moment(this.startDay).add(1, 'week');
+    let tmp = moment(this.startDay);
+    while (tmp.isBefore(this.endDay)) {
+      this.days.push({name: tmp.isoWeekday(), date: tmp.format("YYYY-MM-DD")});
+      tmp.add(1, "day");
     }
   }
 
@@ -47,10 +49,7 @@ export class CalendarComponent implements OnInit {
   }
 
   setReservation(day, hour) {
-    console.log(day);
-    console.log(hour);
-    const r: ReservationAddRequest = {startDatetime: new Date(), hours: 1};
-    this.endpoint.post('registration/add', r);
+    this.router.navigate(["/", this.urlService.getCurrentClub(), "reservation", day, hour]);
   }
 
   getReservation() {
@@ -64,8 +63,4 @@ export class CalendarComponent implements OnInit {
   }
 }
 
-export interface Reservation {
-  id: string;
-  startDatetime: Date;
-  hours: number;
-}
+

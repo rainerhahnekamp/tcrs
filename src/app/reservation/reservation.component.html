@@ -1,0 +1,20 @@
+<div class="form">
+  <md-card>
+    <md-card-header>Court Reservation</md-card-header>
+    <md-card-content>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+        <div fxLayout="column">
+          <div>{{ startDateTimePretty }}</div>
+          <md-input-container>
+            <input type="number" mdInput formControlName="hours" placeholder="Hours">
+          </md-input-container>
+
+          <md-select [(formControl)]="court">
+            <md-option *ngFor="let court of courts" [value]="court" >{{ court }}</md-option>
+          </md-select>
+          <button type="submit" md-raised-button>OK</button>
+        </div>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>

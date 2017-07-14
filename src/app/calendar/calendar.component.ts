@@ -1,11 +1,11 @@
-import {Component, OnInit} from "@angular/core";
-import * as moment from "moment";
-import {Moment} from "moment";
-import * as _ from "lodash";
-import {ReservationResponse} from "endpoints";
-import {Endpoint} from "../services/endpoint.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {UrlService} from "../services/url.service";
+import {Component, OnInit} from '@angular/core';
+import * as moment from 'moment';
+import {Moment} from 'moment';
+import * as _ from 'lodash';
+import {ReservationResponse} from 'endpoints';
+import {Endpoint} from '../services/endpoint.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UrlService} from '../services/url.service';
 
 @Component({
   templateUrl: './calendar.component.html',

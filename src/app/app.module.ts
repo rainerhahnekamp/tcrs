@@ -6,6 +6,7 @@ import {
   DateAdapter,
   MD_DATE_FORMATS,
   MdButtonModule,
+  MdCheckboxModule,
   MdDatepickerModule,
   MdInputModule,
   MdMenuModule,
@@ -46,7 +47,7 @@ import {ReservationResolver} from "./services/reservation-resolver.service";
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpModule,
-    MdButtonModule, MdMenuModule, MdDatepickerModule, MdInputModule, MdSelectModule, MdToolbarModule,
+    MdButtonModule, MdCheckboxModule, MdDatepickerModule, MdInputModule, MdMenuModule, MdSelectModule, MdToolbarModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [

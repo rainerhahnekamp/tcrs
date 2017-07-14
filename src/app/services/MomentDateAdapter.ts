@@ -98,7 +98,6 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     if (!m.isValid()) {
       // try again, forgiving. will get warning if not ISO8601 or RFC2822
       m = moment(value);
-      console.log(`Moment could not parse '${value}', trying non-strict`, m);
     }
     if (m.isValid()) {
       // if user omits year, it defaults to 2001, so check for that issue.

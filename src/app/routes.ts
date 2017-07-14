@@ -1,13 +1,13 @@
-import {CalendarComponent} from "./calendar/calendar.component";
-import {Routes} from "@angular/router";
-import {ClubsResolver} from "./services/club-resolver.service";
-import LoginComponent from "./login/login.component";
-import WelcomeComponent from "./welcome/welcome.component";
-import ClubSelectorComponent from "./club-selection/club-selection.component";
-import RegistrationComponent from "./registration/registration.component";
-import ReservationComponent from "./reservation/reservation.component";
-import RootComponent from "./root/root.component";
-import {ReservationResolver} from "./services/reservation-resolver.service";
+import {CalendarComponent} from './calendar/calendar.component';
+import {Routes} from '@angular/router';
+import {ClubsResolver} from './services/club-resolver.service';
+import LoginComponent from './login/login.component';
+import WelcomeComponent from './welcome/welcome.component';
+import ClubSelectorComponent from './club-selection/club-selection.component';
+import RegistrationComponent from './registration/registration.component';
+import ReservationComponent from './reservation/reservation.component';
+import RootComponent from './root/root.component';
+import {ReservationResolver} from './services/reservation-resolver.service';
 
 export const routes: Routes = [
   {path: 'club-selection', component: ClubSelectorComponent,

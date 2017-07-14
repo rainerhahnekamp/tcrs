@@ -5,13 +5,16 @@
       <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
         <div fxLayout="column">
           <div>{{ startDateTimePretty }}</div>
-          <md-input-container>
-            <input type="number" mdInput formControlName="hours" placeholder="Hours">
-          </md-input-container>
+          <md-select [(formControl)]="hours">
+            <md-option *ngFor="let hour of hourElements" [value]="hour" >Hours: {{ hour }}</md-option>
+          </md-select>
 
           <md-select [(formControl)]="court">
-            <md-option *ngFor="let court of courts" [value]="court" >{{ court }}</md-option>
+            <md-option *ngFor="let court of courts" [value]="court" >Court: {{ court }}</md-option>
           </md-select>
+          <md-checkbox formControlName="confirmation">I confirm that the information provided is correct.
+            <p class="error" [hidden]="!confirmation.hasError('required') || !showConfirmationError">Confirmation must be checked</p>
+          </md-checkbox>
           <button type="submit" md-raised-button>OK</button>
         </div>
       </form>

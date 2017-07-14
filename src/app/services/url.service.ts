@@ -6,6 +6,6 @@ export class UrlService {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   getCurrentClub(): string {
-    return this.activatedRoute.root.firstChild.snapshot.params["club"];
+    return this.activatedRoute.root.firstChild.snapshot.params['club'];
   }
 }

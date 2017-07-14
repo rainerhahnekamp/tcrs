@@ -36,10 +36,10 @@ export class CalendarComponent implements OnInit {
   generateDays() {
     this.startDay = moment().startOf('isoWeek');
     this.endDay = moment(this.startDay).add(1, 'week');
-    let tmp = moment(this.startDay);
+    const tmp = moment(this.startDay);
     while (tmp.isBefore(this.endDay)) {
-      this.days.push({name: tmp.isoWeekday(), date: tmp.format("YYYY-MM-DD")});
-      tmp.add(1, "day");
+      this.days.push({name: tmp.isoWeekday(), date: tmp.format('YYYY-MM-DD')});
+      tmp.add(1, 'day');
     }
   }
 
@@ -49,7 +49,7 @@ export class CalendarComponent implements OnInit {
   }
 
   setReservation(day, hour) {
-    this.router.navigate(["/", this.urlService.getCurrentClub(), "reservation", day, hour]);
+    this.router.navigate(['/', this.urlService.getCurrentClub(), 'reservation', day, hour]);
   }
 
   getReservation() {

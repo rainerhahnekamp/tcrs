@@ -37,7 +37,6 @@ export default class ReservationComponent implements OnInit {
       this.hours = this.formBuilder.control('', Validators.pattern(/\d{2}/));
       this.court = this.formBuilder.control(this.courts[2]);
       this.form = this.formBuilder.group({
-        hours: this.hours
       });
     });
 
@@ -50,10 +49,10 @@ export default class ReservationComponent implements OnInit {
 
       const reservation: Reservation = {
         hours: 0,
-        id: "",
+        id: '',
         startDatetime: new Date(),
-        court: ""
-      }
+        court: ''
+      };
     }
   }
 }

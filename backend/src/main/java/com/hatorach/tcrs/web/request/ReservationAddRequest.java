@@ -11,4 +11,6 @@ import java.time.Instant;
 public class ReservationAddRequest {
   private Instant startDatetime;
   private int hours;
+  private String courtId;
+  private String clubId;
 }

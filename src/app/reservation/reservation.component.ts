@@ -8,6 +8,8 @@ import * as moment from 'moment';
 import {Moment} from 'moment';
 import * as _ from 'lodash';
 import {CourtAvailability} from '../services/reservation-resolver.service';
+import {ReservationEndpoint} from "../services/reservation-endpoint.service";
+import {UrlService} from "../services/url.service";
 
 @Component({
   templateUrl: 'reservation.component.html'
@@ -24,7 +26,10 @@ export default class ReservationComponent implements OnInit {
   hourElements = [1, 2, 3, 4];
   showConfirmationError = false;
 
-  constructor(private formBuilder: FormBuilder, private endpoint: Endpoint, private activatedRoute: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder,
+              private urlService: UrlService,
+              private reservationEndpoint: ReservationEndpoint,
+              private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -45,20 +50,17 @@ export default class ReservationComponent implements OnInit {
         confirmation: this.confirmation
       });
     });
-
   }
 
   onSubmit() {
     this.showConfirmationError = true;
     if (this.form.valid) {
-      const r: ReservationAddRequest = { startDatetime: new Date(), hours: 1};
-      this.endpoint.post('reservation/add', r);
-      const reservation: Reservation = {
-        hours: 0,
-        id: '',
-        startDatetime: new Date(),
-        court: ''
-      };
+      this.reservationEndpoint.addRegistration({
+        startDatetime: this.startDateTime.toDate(),
+        hours: this.hours.value,
+        courtId: this.court.value,
+        clubId: this.urlService.getCurrentClub()
+      }).then(() => alert("Passt"))
     }
   }
 }

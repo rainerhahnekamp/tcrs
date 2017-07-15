@@ -14,6 +14,7 @@ public class Reservation {
   private String id;
   private Instant startDatetime;
   private int hours;
+  private String courtId;
   private String clubId;
   private String accessHash;
 }

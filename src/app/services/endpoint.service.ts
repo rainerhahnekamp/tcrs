@@ -1,6 +1,7 @@
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class Endpoint {
@@ -13,8 +14,10 @@ export class Endpoint {
       .map(this.parseResponse);
   }
 
-  post<T>(url: string, body: any = {}): Observable<T> {
-    return this.http.post('/api/' + url, body).map(this.parseResponse);
+  post<T>(url: string, body: any = {}): Promise<T> {
+    return this.http.post('/api/' + url, body)
+      .map(this.parseResponse)
+      .toPromise();
   }
 
   private parseResponse(response: Response) {

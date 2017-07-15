@@ -1,5 +1,6 @@
 package com.hatorach.tcrs.web;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -32,13 +33,18 @@ public class ReservationControllerTest {
     Instant now = Instant.now();
     addRequest.setStartDatetime(now);
     addRequest.setHours(5);
+    addRequest.setClubId("utc-st-georgen");
+    addRequest.setCourtId("suzanne-langlene");
     controller.add(addRequest);
 
     ArgumentCaptor<Reservation> captor = ArgumentCaptor.forClass(Reservation.class);
     verify(repository).save(captor.capture());
 
-    Assert.assertEquals(5, captor.getValue().getHours());
-    Assert.assertEquals(now, captor.getValue().getStartDatetime());
+    Reservation reservation = captor.getValue();
+    assertEquals(5, reservation.getHours());
+    assertEquals(now, reservation.getStartDatetime());
+    assertEquals("utc-st-georgen", reservation.getClubId());
+    assertEquals("suzanne-langlene", reservation.getCourtId());
   }
 
   @Test

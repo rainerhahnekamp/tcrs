@@ -5,6 +5,8 @@ import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
 import com.hatorach.tcrs.web.response.ReservationResponse;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,9 +36,9 @@ public class ReservationController {
    */
   @RequestMapping(value = "add", method = RequestMethod.POST)
   public Boolean add(@RequestBody ReservationAddRequest reservationAddRequest) {
-    Reservation reservation = new Reservation();
-    reservation.setStartDatetime(reservationAddRequest.getStartDatetime());
-    reservation.setHours(reservationAddRequest.getHours());
+    ModelMapper modelMapper = new ModelMapper();
+    modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+    Reservation reservation = modelMapper.map(reservationAddRequest, Reservation.class);
     reservationRepository.save(reservation);
     return true;
   }

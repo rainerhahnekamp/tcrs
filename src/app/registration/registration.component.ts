@@ -31,7 +31,7 @@ export default class RegistrationComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('form valid');
+
     }
   }
 }

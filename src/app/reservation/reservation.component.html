@@ -13,8 +13,8 @@
             <md-option *ngFor="let court of courts" [value]="court" >Court: {{ court }}</md-option>
           </md-select>
           <md-checkbox formControlName="confirmation">I confirm that the information provided is correct.
-            <p class="error" [hidden]="!confirmation.hasError('required') || !showConfirmationError">Confirmation must be checked</p>
           </md-checkbox>
+          <p class="error-checkbox" [hidden]="!confirmation.hasError('required') || !showConfirmationError">Confirmation must be checked</p>
           <button type="submit" md-raised-button>OK</button>
         </div>
       </form>

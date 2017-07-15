@@ -1,5 +1,6 @@
 package com.hatorach.tcrs.web;
 
+import com.hatorach.tcrs.ReservationAdder;
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
@@ -25,10 +26,13 @@ import java.util.stream.Collectors;
 @RequestMapping("reservation")
 public class ReservationController {
   private ReservationRepository reservationRepository;
+  private ReservationAdder reservationAdder;
 
   @Autowired
-  public ReservationController(ReservationRepository reservationRepository) {
+  public ReservationController(ReservationRepository reservationRepository,
+                               ReservationAdder reservationAdder) {
     this.reservationRepository = reservationRepository;
+    this.reservationAdder = reservationAdder;
   }
 
   /**
@@ -36,11 +40,7 @@ public class ReservationController {
    */
   @RequestMapping(value = "add", method = RequestMethod.POST)
   public Boolean add(@RequestBody ReservationAddRequest reservationAddRequest) {
-    ModelMapper modelMapper = new ModelMapper();
-    modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-    Reservation reservation = modelMapper.map(reservationAddRequest, Reservation.class);
-    reservationRepository.save(reservation);
-    return true;
+    return this.reservationAdder.add(reservationAddRequest);
   }
 
   /**

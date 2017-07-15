@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.hatorach.tcrs.ReservationAdder;
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
@@ -26,25 +27,12 @@ import java.util.List;
 public class ReservationControllerTest {
   @Test
   public void add() throws Exception {
-    ReservationRepository repository = mock(ReservationRepository.class);
-    ReservationController controller = new ReservationController(repository);
+    ReservationAdder reservationAdder = mock(ReservationAdder.class);
+    ReservationController controller = new ReservationController(null, reservationAdder);
+    ReservationAddRequest reservationAddRequest = new ReservationAddRequest();
 
-    ReservationAddRequest addRequest = new ReservationAddRequest();
-    Instant now = Instant.now();
-    addRequest.setStartDatetime(now);
-    addRequest.setHours(5);
-    addRequest.setClubId("utc-st-georgen");
-    addRequest.setCourtId("suzanne-langlene");
-    controller.add(addRequest);
-
-    ArgumentCaptor<Reservation> captor = ArgumentCaptor.forClass(Reservation.class);
-    verify(repository).save(captor.capture());
-
-    Reservation reservation = captor.getValue();
-    assertEquals(5, reservation.getHours());
-    assertEquals(now, reservation.getStartDatetime());
-    assertEquals("utc-st-georgen", reservation.getClubId());
-    assertEquals("suzanne-langlene", reservation.getCourtId());
+    controller.add(reservationAddRequest);
+    verify(reservationAdder).add(reservationAddRequest);
   }
 
   @Test
@@ -60,7 +48,7 @@ public class ReservationControllerTest {
     when(repository.findByStartDatetimeBetween(any(), any()))
       .thenReturn(reservations);
 
-    ReservationController controller = new ReservationController(repository);
+    ReservationController controller = new ReservationController(repository, null);
     List<ReservationResponse> reservationResponses = controller.find(
       Date.from(now.minus(2, ChronoUnit.DAYS)),
       Date.from(now)

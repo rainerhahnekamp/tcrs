@@ -2,6 +2,7 @@ package com.hatorach.tcrs.web;
 
 import com.hatorach.tcrs.repository.ClubRepository;
 import com.hatorach.tcrs.web.response.ClubsListResponse;
+import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 /**
  * Created by rainerh on 23.04.17.
  */
+@Builder
 @RestController
 @RequestMapping("clubs")
 public class ClubsController {

@@ -21,7 +21,8 @@ public class ReservationAdderTest {
   @Test
   public void testAdd() {
     ReservationRepository reservationRepository = mock(ReservationRepository.class);
-    ReservationAdder reservationAdder = new ReservationAdder(reservationRepository);
+    ReservationAdder reservationAdder =
+      ReservationAdder.builder().reservationRepository(reservationRepository).build();
     ReservationAddRequest addRequest = new ReservationAddRequest();
     Instant now = Instant.now();
     addRequest.setStartDatetime(now);

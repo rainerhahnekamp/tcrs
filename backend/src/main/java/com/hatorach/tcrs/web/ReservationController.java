@@ -5,6 +5,7 @@ import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
 import com.hatorach.tcrs.web.response.ReservationResponse;
+import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 /**
  * Created by rainerh on 24.04.16.
  */
+@Builder
 @RestController
 @RequestMapping("reservation")
 public class ReservationController {

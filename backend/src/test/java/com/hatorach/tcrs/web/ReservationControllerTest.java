@@ -28,7 +28,8 @@ public class ReservationControllerTest {
   @Test
   public void add() throws Exception {
     ReservationAdder reservationAdder = mock(ReservationAdder.class);
-    ReservationController controller = new ReservationController(null, reservationAdder);
+    ReservationController controller =
+      ReservationController.builder().reservationAdder(reservationAdder).build();
     ReservationAddRequest reservationAddRequest = new ReservationAddRequest();
 
     controller.add(reservationAddRequest);
@@ -48,16 +49,17 @@ public class ReservationControllerTest {
     when(repository.findByStartDatetimeBetween(any(), any()))
       .thenReturn(reservations);
 
-    ReservationController controller = new ReservationController(repository, null);
+    ReservationController controller =
+      ReservationController.builder().reservationRepository(repository).build();
     List<ReservationResponse> reservationResponses = controller.find(
       Date.from(now.minus(2, ChronoUnit.DAYS)),
       Date.from(now)
     );
 
-    Assert.assertEquals(1, reservationResponses.size());
+    assertEquals(1, reservationResponses.size());
     ReservationResponse reservationResponse = reservationResponses.get(0);
-    Assert.assertEquals(5, reservationResponse.getHours());
-    Assert.assertEquals(now, reservationResponse.getStartDatetime());
-    Assert.assertEquals("someMongoId", reservationResponse.getId());
+    assertEquals(5, reservationResponse.getHours());
+    assertEquals(now, reservationResponse.getStartDatetime());
+    assertEquals("someMongoId", reservationResponse.getId());
   }
 }

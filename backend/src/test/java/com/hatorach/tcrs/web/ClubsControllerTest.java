@@ -26,7 +26,10 @@ public class ClubsControllerTest {
     ClubRepository clubRepository = mock(ClubRepository.class);
     when(clubRepository.findAll()).thenReturn(Arrays.asList(club1, club2));
 
-    List<ClubsListResponse> clubs = new ClubsController(clubRepository, modelMapper).list();
+    List<ClubsListResponse> clubs =
+      ClubsController
+        .builder().clubRepository(clubRepository).modelMapper(modelMapper).build()
+        .list();
     assertEquals("Club 1", clubs.get(0).getName());
     assertEquals("club-1", clubs.get(0).getUrl());
     assertEquals("Club 2", clubs.get(1).getName());

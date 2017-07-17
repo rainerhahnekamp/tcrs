@@ -47,10 +47,11 @@ generateTypeScript {
   customTypeMappings = [
     'java.time.Instant:Date'
   ]
+  module = 'endpoints'
+  noFileComment = true
   outputFile = '../src/endpoints.d.ts'
   outputKind = 'ambientModule'
   stringQuotes = cz.habarta.typescript.generator.StringQuotes.singleQuotes
-  module = 'endpoints'
 }
 bootRun.dependsOn 'generateTypeScript'
 

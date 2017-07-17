@@ -49,6 +49,7 @@ generateTypeScript {
   ]
   outputFile = '../src/endpoints.d.ts'
   outputKind = 'ambientModule'
+  stringQuotes = cz.habarta.typescript.generator.StringQuotes.singleQuotes
   module = 'endpoints'
 }
 bootRun.dependsOn 'generateTypeScript'

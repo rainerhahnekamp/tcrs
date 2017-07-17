@@ -1,6 +1,6 @@
-// Generated using typescript-generator version 1.25.322 on 2017-07-15 19:45:33.
+// Generated using typescript-generator version 1.25.322 on 2017-07-17 10:23:04.
 
-declare module "endpoints" {
+declare module 'endpoints' {
 
     interface ReservationAddRequest {
         startDatetime: Date;

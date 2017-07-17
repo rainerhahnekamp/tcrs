@@ -8,8 +8,8 @@ import * as moment from 'moment';
 import {Moment} from 'moment';
 import * as _ from 'lodash';
 import {CourtAvailability} from '../services/reservation-resolver.service';
-import {ReservationEndpoint} from "../services/reservation-endpoint.service";
-import {UrlService} from "../services/url.service";
+import {ReservationEndpoint} from '../services/reservation-endpoint.service';
+import {UrlService} from '../services/url.service';
 
 @Component({
   templateUrl: 'reservation.component.html'
@@ -60,7 +60,7 @@ export default class ReservationComponent implements OnInit {
         hours: this.hours.value,
         courtId: this.court.value,
         clubId: this.urlService.getCurrentClub()
-      }).then(() => alert("Passt"))
+      }).then(() => alert('Passt'));
     }
   }
 }

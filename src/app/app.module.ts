@@ -34,7 +34,7 @@ import WelcomeComponent from './welcome/welcome.component';
 import ReservationComponent from './reservation/reservation.component';
 import {UrlService} from './services/url.service';
 import {ReservationResolver} from './services/reservation-resolver.service';
-import {ReservationEndpoint} from "./services/reservation-endpoint.service";
+import {ReservationEndpoint} from './services/reservation-endpoint.service';
 
 @NgModule({
   imports: [

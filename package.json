@@ -7,6 +7,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
+    "postinstall": "npm rebuild node-sass", //https://github.com/yarnpkg/yarn/issues/1981
     "test": "ng test",
     "test-sr": "ng test --browsers PhantomJS -sr",
     "ci": "ng lint && ng test --browsers PhantomJS -sr",

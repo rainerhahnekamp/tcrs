@@ -8,11 +8,12 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
+    "ci": "ng lint && ng test -sr",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "pre-commit": [
-    "lint"
+    "ci"
   ],
   "private": true,
   "dependencies": {

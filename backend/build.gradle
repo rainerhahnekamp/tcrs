@@ -1,5 +1,6 @@
 import java.util.regex.Pattern
 import java.util.stream.Collectors
+cz.habarta.typescript.generator.StringQuotes
 
 buildscript {
   ext {
@@ -51,7 +52,7 @@ generateTypeScript {
   noFileComment = true
   outputFile = '../src/endpoints.d.ts'
   outputKind = 'ambientModule'
-  stringQuotes = cz.habarta.typescript.generator.StringQuotes.singleQuotes
+  stringQuotes = StringQuotes.singleQuotes
 }
 bootRun.dependsOn 'generateTypeScript'
 

@@ -8,13 +8,17 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
-    "test-sr": "ng test -sr",
-    "ci": "ng lint && ng test -sr",
+    "test-sr": "ng test --browsers PhantomJS -sr",
+    "ci": "ng lint && ng test --browsers PhantomJS -sr",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "pre-commit": ["lint"],
-  "pre-push": ["test-sr"],
+  "pre-commit": [
+    "lint"
+  ],
+  "pre-push": [
+    "test-sr"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.0.2",
@@ -55,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.4",
     "pre-commit": "^1.2.2",
     "pre-push": "^0.1.1",
     "protractor": "~5.1.2",

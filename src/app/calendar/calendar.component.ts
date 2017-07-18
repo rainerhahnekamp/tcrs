@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
   isMobile = false;
 
   constructor(private endpoint: Endpoint, private router: Router,
-              private activatedRoute: ActivatedRoute, private urlService: UrlService) {};
+              private activatedRoute: ActivatedRoute, private urlService: UrlService) {}
 
   ngOnInit() {
     this.generateDays();

@@ -17,7 +17,7 @@ buildscript {
 }
 
 plugins {
-  id "org.sonarqube" version "2.2"
+  id "org.sonarqube" version "2.5"
 }
 
 apply plugin: 'checkstyle'
@@ -84,10 +84,6 @@ idea {
   }
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '3.1'
-}
-
 def fetchIgnoreInTestCoverageFiles = { List<Pattern> ignoreInTestCoverageFlags ->
   def lengthCwd = projectDir.getAbsolutePath().length()
 
@@ -112,4 +108,5 @@ sonarqube {
 checkstyle {
   toolVersion = "7.8.2"
   ignoreFailures = false
+  maxWarnings = 0
 }

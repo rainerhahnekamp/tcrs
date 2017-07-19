@@ -22,6 +22,9 @@ public class ReservationAdder {
     this.reservationRepository = reservationRepository;
   }
 
+  /**
+   * Logic for adding a new reservation.
+   */
   public boolean add(ReservationAddRequest reservationAddRequest) {
     ModelMapper modelMapper = new ModelMapper();
     modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);

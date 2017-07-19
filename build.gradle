@@ -1,6 +1,13 @@
+plugins {
+  id "org.sonarqube" version "2.5"
+}
+
+apply plugin: 'org.sonarqube'
+
 task wrapper(type: Wrapper) {
   gradleVersion = '4.0.1'
 }
+
 
 sonarqube {
   properties {

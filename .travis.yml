@@ -1,7 +1,7 @@
 language: node_js
 
 addons:
-  sonarqube:
+  sonarcloud:
     organization: rainerhahnekamp-github
     token:
       secure: 4e891e5de78c822bce4d9c2da399fcb017183316

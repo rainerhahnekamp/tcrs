@@ -97,14 +97,6 @@ def fetchIgnoreInTestCoverageFiles = { List<Pattern> ignoreInTestCoverageFlags -
     .collect(Collectors.toList())
 }
 
-sonarqube {
-  properties {
-    property 'sonar.projectKey', 'com.hatorach.tcrs'
-    property 'sonar.projectName', 'TCRS'
-    property 'sonar.exclusions', fetchIgnoreInTestCoverageFiles([/@IgnoreInTestCoverage/, /@Data/])
-  }
-}
-
 checkstyle {
   toolVersion = "7.8.2"
   ignoreFailures = false

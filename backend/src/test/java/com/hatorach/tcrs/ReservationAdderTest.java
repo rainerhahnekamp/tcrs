@@ -1,12 +1,5 @@
 package com.hatorach.tcrs;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.powermock.api.mockito.PowerMockito.when;
-
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.mail.Mail;
 import com.hatorach.tcrs.mail.MailService;
@@ -14,17 +7,19 @@ import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.UrlGenerator;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
 import com.hatorach.tcrs.web.response.ReservationAddResponse;
-import com.sun.mail.iap.Argument;
-import org.aspectj.apache.bcel.Repository;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatcher;
 import org.mockito.Captor;
 import org.mockito.MockitoAnnotations;
 
 import java.time.Instant;
 import java.util.function.UnaryOperator;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
  * Created by chjtom on 15.07.17.
@@ -94,12 +89,14 @@ public class ReservationAdderTest {
         .mailService(mock(MailService.class)).build();
     ArgumentCaptor<Reservation> captor = ArgumentCaptor.forClass(Reservation.class);
     Instant now = Instant.now();
-    Reservation reservation = Reservation.builder().id("foo").accessHash("bar").clubId("tc-stgeorgen")
+    Reservation reservation = Reservation.builder().id("foo")
+      .accessHash("bar").clubId("tc-stgeorgen")
       .courtId("susanne").hours(2).startDatetime(now).build();
     when(reservationRepository.save(any(Reservation.class))).thenReturn(reservation);
     when(urlGenerator.getUrl("reservation/edit/foo/bar")).thenReturn("a");
 
-    ReservationAddResponse reservationAddResponse = reservationAdder.add(new ReservationAddRequest());
+    ReservationAddResponse reservationAddResponse = reservationAdder
+      .add(new ReservationAddRequest());
 
     assertEquals("a", reservationAddResponse.getUrl());
     assertEquals("tc-stgeorgen", reservationAddResponse.getClubId());

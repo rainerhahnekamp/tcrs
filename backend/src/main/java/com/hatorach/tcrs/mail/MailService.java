@@ -40,9 +40,9 @@ public class MailService {
       helper.setSubject(mail.getSubject());
       helper.setText(mail.getBody(), true);
       javaMailSender.send(mimeMessage);
-    } catch (javax.mail.MessagingException e) {
+    } catch (javax.mail.MessagingException messageException) {
       //TODO:!!!
-      log.error("MAIL" + e.toString());
+      log.error("MAIL" + messageException.toString());
     }
   }
 

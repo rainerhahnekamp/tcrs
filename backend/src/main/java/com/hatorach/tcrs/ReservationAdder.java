@@ -24,8 +24,12 @@ public class ReservationAdder {
   private MailService mailService;
   private UrlGenerator urlGenerator;
 
+  /**
+   * Constructor.
+   */
   @Autowired
-  public ReservationAdder(ReservationRepository reservationRepository, MailService mailService, UrlGenerator urlGenerator) {
+  public ReservationAdder(ReservationRepository reservationRepository, MailService mailService,
+                          UrlGenerator urlGenerator) {
     this.reservationRepository = reservationRepository;
     this.mailService = mailService;
     this.urlGenerator = urlGenerator;
@@ -41,10 +45,13 @@ public class ReservationAdder {
     reservation.setAccessHash(RandomStringUtils.randomAscii(12));
     reservation = reservationRepository.save(reservation);
 
-    this.mailService.send(mailBuilder -> mailBuilder.recipient("office@hatorach.com").subject("TCRS").body("TESTMSG"));
+    this.mailService.send(mailBuilder -> mailBuilder.recipient("office@hatorach.com")
+      .subject("TCRS")
+      .body("TESTMSG"));
 
     ReservationAddResponse returner = modelMapper.map(reservation, ReservationAddResponse.class);
-    returner.setUrl(urlGenerator.getUrl("reservation/edit/" + reservation.getId() + "/" + reservation.getAccessHash()));
+    returner.setUrl(urlGenerator.getUrl("reservation/edit/" + reservation.getId() + "/"
+      + reservation.getAccessHash()));
     return returner;
   }
 }

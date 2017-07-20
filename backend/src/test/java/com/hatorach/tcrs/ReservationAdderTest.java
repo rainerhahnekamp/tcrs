@@ -1,5 +1,11 @@
 package com.hatorach.tcrs;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.powermock.api.mockito.PowerMockito.when;
+
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.mail.Mail;
 import com.hatorach.tcrs.mail.MailService;
@@ -14,12 +20,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.time.Instant;
 import java.util.function.UnaryOperator;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
  * Created by chjtom on 15.07.17.

@@ -13,6 +13,14 @@ declare module 'endpoints' {
         name: string;
     }
 
+    interface ReservationAddResponse {
+        clubId: string;
+        courtId: string;
+        hours: number;
+        startDatetime: Date;
+        url: string;
+    }
+
     interface ReservationResponse {
         id: string;
         startDatetime: Date;

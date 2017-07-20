@@ -8,18 +8,15 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "postinstall": "npm rebuild node-sass",
+    "gradlecheck": "./gradlew check",
     "test": "ng test",
     "test-sr": "ng test --browsers PhantomJS -sr",
     "ci": "ng lint && ng test --browsers PhantomJS -sr",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "pre-commit": [
-    "lint"
-  ],
-  "pre-push": [
-    "test-sr"
-  ],
+  "pre-commit": ["lint", "gradlecheck"],
+  "pre-push": ["test-sr"],
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.0.2",

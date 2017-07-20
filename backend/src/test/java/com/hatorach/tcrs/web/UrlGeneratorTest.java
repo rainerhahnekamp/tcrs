@@ -1,8 +1,8 @@
 package com.hatorach.tcrs.web;
 
-import org.junit.Test;
-
 import static org.testng.AssertJUnit.assertEquals;
+
+import org.junit.Test;
 
 
 /**

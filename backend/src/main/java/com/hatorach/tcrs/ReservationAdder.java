@@ -1,6 +1,7 @@
 package com.hatorach.tcrs;
 
 import com.hatorach.tcrs.entity.Reservation;
+import com.hatorach.tcrs.mail.MailService;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
 import lombok.Builder;
@@ -16,10 +17,12 @@ import org.springframework.stereotype.Service;
 @Builder
 public class ReservationAdder {
   private ReservationRepository reservationRepository;
+  private MailService mailService;
 
   @Autowired
-  public ReservationAdder(ReservationRepository reservationRepository) {
+  public ReservationAdder(ReservationRepository reservationRepository, MailService mailService) {
     this.reservationRepository = reservationRepository;
+    this.mailService = mailService;
   }
 
   /**
@@ -30,6 +33,9 @@ public class ReservationAdder {
     modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     Reservation reservation = modelMapper.map(reservationAddRequest, Reservation.class);
     reservationRepository.save(reservation);
+
+    this.mailService.send(mailBuilder -> mailBuilder.recipient("office@hatorach.com").subject("TCRS").body("TESTMSG"));
+
     return true;
   }
 }

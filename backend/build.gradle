@@ -56,6 +56,9 @@ generateTypeScript {
 }
 bootRun.dependsOn 'generateTypeScript'
 
+configurations {
+  compile.exclude module: 'spring-boot-starter-logging'
+}
 dependencies {
   compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
   compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
@@ -65,6 +68,7 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.springframework.boot:spring-boot-starter-cache'
   compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+  compile 'org.springframework.boot:spring-boot-starter-log4j2'
   compile 'org.springframework.boot:spring-boot-starter-mail'
   compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.boot:spring-boot-starter-web'

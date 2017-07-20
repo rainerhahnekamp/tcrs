@@ -4,6 +4,7 @@ import com.hatorach.tcrs.ReservationAdder;
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
+import com.hatorach.tcrs.web.response.ReservationAddResponse;
 import com.hatorach.tcrs.web.response.ReservationResponse;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
@@ -41,7 +42,7 @@ public class ReservationController {
    * adds a new reservation.
    */
   @RequestMapping(value = "add", method = RequestMethod.POST)
-  public String add(@RequestBody ReservationAddRequest reservationAddRequest) {
+  public ReservationAddResponse add(@RequestBody ReservationAddRequest reservationAddRequest) {
     return this.reservationAdder.add(reservationAddRequest);
   }
 

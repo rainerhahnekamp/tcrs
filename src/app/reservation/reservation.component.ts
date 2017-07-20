@@ -60,7 +60,10 @@ export default class ReservationComponent implements OnInit {
         hours: this.hours.value,
         courtId: this.court.value,
         clubId: this.urlService.getCurrentClub()
-      }).then(() => alert('Passt'));
+      }).then(
+        tmp => {
+        }
+      );
     }
   }
 }

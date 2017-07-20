@@ -20,7 +20,8 @@ export const routes: Routes = [
     {
       path: 'reservation/:day/:hour',
       component: ReservationComponent,
-      resolve: {courtAvailability: ReservationResolver}}
+      resolve: {courtAvailability: ReservationResolver}
+    }
   ]},
   {path: '', redirectTo: 'club-selection', pathMatch: 'full'}
 ];

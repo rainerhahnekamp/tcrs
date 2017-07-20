@@ -13,6 +13,7 @@ import com.hatorach.tcrs.mail.MailService;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.UrlGenerator;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
+import com.hatorach.tcrs.web.response.ReservationAddResponse;
 import com.sun.mail.iap.Argument;
 import org.aspectj.apache.bcel.Repository;
 import org.junit.Before;
@@ -92,12 +93,19 @@ public class ReservationAdderTest {
         .reservationRepository(reservationRepository).urlGenerator(urlGenerator)
         .mailService(mock(MailService.class)).build();
     ArgumentCaptor<Reservation> captor = ArgumentCaptor.forClass(Reservation.class);
-    Reservation reservation = Reservation.builder().id("foo").accessHash("bar").build();
+    Instant now = Instant.now();
+    Reservation reservation = Reservation.builder().id("foo").accessHash("bar").clubId("tc-stgeorgen")
+      .courtId("susanne").hours(2).startDatetime(now).build();
     when(reservationRepository.save(any(Reservation.class))).thenReturn(reservation);
+    when(urlGenerator.getUrl("reservation/edit/foo/bar")).thenReturn("a");
 
-    reservationAdder.add(new ReservationAddRequest());
+    ReservationAddResponse reservationAddResponse = reservationAdder.add(new ReservationAddRequest());
 
-    verify(urlGenerator).getUrl("reservation/edit/foo/bar");
+    assertEquals("a", reservationAddResponse.getUrl());
+    assertEquals("tc-stgeorgen", reservationAddResponse.getClubId());
+    assertEquals("susanne", reservationAddResponse.getCourtId());
+    assertEquals( 2, reservationAddResponse.getHours());
+    assertEquals(now, reservationAddResponse.getStartDatetime());
   }
 
 }

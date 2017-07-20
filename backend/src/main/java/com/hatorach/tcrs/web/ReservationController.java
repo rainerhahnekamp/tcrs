@@ -41,7 +41,7 @@ public class ReservationController {
    * adds a new reservation.
    */
   @RequestMapping(value = "add", method = RequestMethod.POST)
-  public Boolean add(@RequestBody ReservationAddRequest reservationAddRequest) {
+  public String add(@RequestBody ReservationAddRequest reservationAddRequest) {
     return this.reservationAdder.add(reservationAddRequest);
   }
 

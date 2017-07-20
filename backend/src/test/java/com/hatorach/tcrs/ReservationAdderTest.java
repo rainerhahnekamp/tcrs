@@ -2,14 +2,19 @@ package com.hatorach.tcrs;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.mail.Mail;
 import com.hatorach.tcrs.mail.MailService;
 import com.hatorach.tcrs.repository.ReservationRepository;
+import com.hatorach.tcrs.web.UrlGenerator;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
+import com.sun.mail.iap.Argument;
+import org.aspectj.apache.bcel.Repository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -41,7 +46,10 @@ public class ReservationAdderTest {
     ReservationAdder reservationAdder =
       ReservationAdder.builder()
         .reservationRepository(reservationRepository)
+        .urlGenerator(mock(UrlGenerator.class))
         .mailService(mock(MailService.class)).build();
+    when(reservationRepository.save(any(Reservation.class))).thenReturn(new Reservation());
+
     reservationAdder.add(addRequest);
 
     ArgumentCaptor<Reservation> captor = ArgumentCaptor.forClass(Reservation.class);
@@ -58,12 +66,14 @@ public class ReservationAdderTest {
   @Test
   public void testMail() {
     MockitoAnnotations.initMocks(this);
-
     MailService mailService = mock(MailService.class);
+    ReservationRepository repository = mock(ReservationRepository.class);
     ReservationAdder reservationAdder =
       ReservationAdder.builder()
-        .reservationRepository(mock(ReservationRepository.class))
+        .reservationRepository(repository)
+        .urlGenerator(mock(UrlGenerator.class))
         .mailService(mailService).build();
+    when(repository.save(any(Reservation.class))).thenReturn(new Reservation());
 
     reservationAdder.add(new ReservationAddRequest());
 
@@ -71,6 +81,23 @@ public class ReservationAdderTest {
     Mail.MailBuilder mailBuilder = Mail.builder();
     this.argumentCaptor.getValue().apply(mailBuilder);
     assertEquals("TESTMSG", mailBuilder.build().getBody());
+  }
+
+  @Test
+  public void testUrlGenerator() {
+    UrlGenerator urlGenerator = mock(UrlGenerator.class);
+    ReservationRepository reservationRepository = mock(ReservationRepository.class);
+    ReservationAdder reservationAdder =
+      ReservationAdder.builder()
+        .reservationRepository(reservationRepository).urlGenerator(urlGenerator)
+        .mailService(mock(MailService.class)).build();
+    ArgumentCaptor<Reservation> captor = ArgumentCaptor.forClass(Reservation.class);
+    Reservation reservation = Reservation.builder().id("foo").accessHash("bar").build();
+    when(reservationRepository.save(any(Reservation.class))).thenReturn(reservation);
+
+    reservationAdder.add(new ReservationAddRequest());
+
+    verify(urlGenerator).getUrl("reservation/edit/foo/bar");
   }
 
 }

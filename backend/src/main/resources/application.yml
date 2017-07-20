@@ -11,3 +11,6 @@ mail:
   login: none
   password: none
   defaultSender: someemail@somehost.com
+
+web:
+  baseUrl: http://localhost/

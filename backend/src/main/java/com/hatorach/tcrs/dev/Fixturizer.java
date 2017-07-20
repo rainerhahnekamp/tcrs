@@ -31,13 +31,11 @@ public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
   }
 
   @Override public void onApplicationEvent(ContextRefreshedEvent cre) {
-    Reservation reservation = new Reservation();
     Instant monday16 = ZonedDateTime.of(
       LocalDateTime.of(LocalDate.now().with(DayOfWeek.MONDAY), LocalTime.of(16, 0)),
       ZoneId.of("Europe/Vienna")
     ).toInstant();
-    reservation.setStartDatetime(monday16);
-    reservation.setHours(2);
+    Reservation reservation = Reservation.builder().startDatetime(monday16).hours(2).build();
     mongoTemplate.save(reservation);
 
 

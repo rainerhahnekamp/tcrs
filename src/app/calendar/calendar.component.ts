@@ -33,6 +33,10 @@ export class CalendarComponent implements OnInit {
     this.toHour = 20;
   }
 
+  updateView() {
+
+  }
+
   generateDays() {
     this.startDay = moment().startOf('isoWeek');
     this.endDay = moment(this.startDay).add(1, 'week');
@@ -43,11 +47,6 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  updateView(tmpDate) {
-    console.log('--UPDATE VIEW--');
-    console.log(tmpDate);
-  }
-
   setReservation(day, hour) {
     this.router.navigate(['/', this.urlService.getCurrentClub(), 'reservation', day, hour]);
   }
@@ -55,10 +54,7 @@ export class CalendarComponent implements OnInit {
   getReservation() {
     const queryStr = '?from=2016-04-29&to=2016-05-01';
     return this.endpoint.get<ReservationResponse[]>('/reservation/find' + queryStr).subscribe(
-      reservations => {
-        this.reservations = reservations;
-        console.log(this.reservations);
-      }
+      (reservations) => this.reservations = reservations
     );
   }
 }

@@ -4,22 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.when;
 
-import com.hatorach.tcrs.ReservationAdder;
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
+import com.hatorach.tcrs.web.reservation.adder.ReservationAdder;
 import com.hatorach.tcrs.web.response.ReservationResponse;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-import org.testng.Assert;
 
 import java.sql.Date;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by rainerh on 13.06.16.

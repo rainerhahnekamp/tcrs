@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Reservation} from '../models/Reservation';
-import {ReservationAddRequest} from 'endpoints';
+import {ReservationAddRequest, ReservationAddResponse} from 'endpoints';
 import {Endpoint} from '../services/endpoint.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as moment from 'moment';
 import {Moment} from 'moment';
 import * as _ from 'lodash';
 import {CourtAvailability} from '../services/reservation-resolver.service';
 import {ReservationEndpoint} from '../services/reservation-endpoint.service';
 import {UrlService} from '../services/url.service';
+import {PfuschStore} from '../services/pfusch--store.service';
 
 @Component({
   templateUrl: 'reservation.component.html'
@@ -29,7 +30,9 @@ export default class ReservationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private urlService: UrlService,
               private reservationEndpoint: ReservationEndpoint,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private store: PfuschStore) {
 
   }
 
@@ -60,10 +63,10 @@ export default class ReservationComponent implements OnInit {
         hours: this.hours.value,
         courtId: this.court.value,
         clubId: this.urlService.getCurrentClub()
-      }).then(
-        tmp => {
-        }
-      );
+      }).then((reservationAddResponse) => {
+        this.store.put('reservation', reservationAddResponse);
+        this.router.navigate(['/', this.urlService.getCurrentClub(), 'reservation-finished']);
+      });
     }
   }
 }

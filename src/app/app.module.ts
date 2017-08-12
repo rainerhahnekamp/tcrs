@@ -35,6 +35,8 @@ import ReservationComponent from './reservation/reservation.component';
 import {UrlService} from './services/url.service';
 import {ReservationResolver} from './services/reservation-resolver.service';
 import {ReservationEndpoint} from './services/reservation-endpoint.service';
+import ReservationFinishedComponent from './reservation-finished/reservation-finished.component';
+import {PfuschStore} from './services/pfusch--store.service';
 
 @NgModule({
   imports: [
@@ -53,13 +55,14 @@ import {ReservationEndpoint} from './services/reservation-endpoint.service';
   ],
   declarations: [
     AppComponent, RootComponent, ClubSelectorComponent, CalendarComponent, LoginComponent,
-    ReservationComponent, RegistrationComponent, WelcomeComponent],
+    ReservationComponent, ReservationFinishedComponent, RegistrationComponent, WelcomeComponent],
   bootstrap: [AppComponent],
   providers: [
     {provide: LOCALE_ID, useValue: window.navigator.language},
     ClubsResolver,
     ClubsBroker,
     Endpoint,
+    PfuschStore,
     ReservationEndpoint,
     ReservationResolver,
     UrlService,

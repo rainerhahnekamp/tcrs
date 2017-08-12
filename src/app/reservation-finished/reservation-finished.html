@@ -1,0 +1,10 @@
+<md-card>
+  <md-card-header>Court Reservation Successful</md-card-header>
+  <md-card-content>
+    <p>Your reservation has been placed succesfully
+      on {{ reservationAddResponse.startDatetime | date }}
+      for {{reservationAddResponse.hours}} hour(s)
+      on court {{reservationAddResponse.courtId}}</p>
+    <p>You can access this reservation via the url <a href="{{reservationAddResponse.url}}">{{reservationAddResponse.url}}</a></p>
+  </md-card-content>
+</md-card>

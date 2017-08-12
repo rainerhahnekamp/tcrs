@@ -3,6 +3,7 @@ package com.hatorach.tcrs.web.response;
 import lombok.Data;
 
 import java.time.Instant;
+import java.util.Date;
 
 /**
  * Created by chjtom on 20.07.17.

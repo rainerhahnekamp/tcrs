@@ -1,6 +1,7 @@
 package com.hatorach.tcrs.security.registration;
 
 import com.hatorach.tcrs.security.entity.User;
+import lombok.Builder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,15 +12,18 @@ public class RegistrationService {
   private PasswordCheck passwordCheck;
   private UserPersister userPersister;
   private UserFinder userFinder;
+  private UserCreator userCreator;
 
   /**
    * constructor.
    */
-  public RegistrationService(PasswordCheck passwordCheck, UserPersister userPersister,
-                             UserFinder userFinder) {
+  public RegistrationService(
+    PasswordCheck passwordCheck, UserPersister userPersister,
+    UserFinder userFinder, UserCreator userCreator) {
     this.passwordCheck = passwordCheck;
     this.userPersister = userPersister;
     this.userFinder = userFinder;
+    this.userCreator = userCreator;
   }
 
   /**
@@ -34,11 +38,7 @@ public class RegistrationService {
       return false;
     }
 
-    User user = new User();
-    user.setEmail(email);
-    user.setPassword(password);
-    user.setRegistrationStatus(RegistrationStatus.PENDINGACTIVATION);
-    userPersister.persist(user);
+    userPersister.persist(this.userCreator.create(email, password));
 
     return true;
   }

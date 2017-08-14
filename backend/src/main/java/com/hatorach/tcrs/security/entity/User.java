@@ -1,7 +1,10 @@
 package com.hatorach.tcrs.security.entity;
 
 import com.hatorach.tcrs.security.registration.RegistrationStatus;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +13,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
   @Id
   private String id;
@@ -18,7 +24,7 @@ public class User {
   private String password;
   private String username;
   private RegistrationStatus registrationStatus;
-  private boolean isRegular;
-  private boolean isGoogle;
-  private boolean isFacebook;
+  private boolean regular = true;
+  private boolean google = false;
+  private boolean facebook = false;
 }

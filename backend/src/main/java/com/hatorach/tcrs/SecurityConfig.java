@@ -19,12 +19,7 @@ public class SecurityConfig {
    */
   @Bean
   public UserFinder getUserFind(UserRepository userRepository) {
-    return new UserFinder() {
-      @Override
-      public Optional<User> findByEmail(String email) {
-        return Optional.ofNullable(userRepository.findByEmail(email));
-      }
-    };
+    return email -> Optional.ofNullable(userRepository.findByEmail(email));
   }
 
   /**
@@ -32,11 +27,6 @@ public class SecurityConfig {
    */
   @Bean
   public UserPersister getUserPersister(UserRepository userRepository) {
-    return new UserPersister() {
-      @Override
-      public void persist(User user) {
-        userRepository.save(user);
-      }
-    };
+    return userRepository::save;
   }
 }

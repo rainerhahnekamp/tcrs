@@ -37,6 +37,7 @@ import {ReservationResolver} from './services/reservation-resolver.service';
 import {ReservationEndpoint} from './services/reservation-endpoint.service';
 import ReservationFinishedComponent from './reservation-finished/reservation-finished.component';
 import {PfuschStore} from './services/pfusch--store.service';
+import {DateParser} from './services/date-parser.service';
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ import {PfuschStore} from './services/pfusch--store.service';
     {provide: LOCALE_ID, useValue: window.navigator.language},
     ClubsResolver,
     ClubsBroker,
+    DateParser,
     Endpoint,
     PfuschStore,
     ReservationEndpoint,

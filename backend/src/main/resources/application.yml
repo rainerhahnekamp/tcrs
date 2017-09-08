@@ -12,5 +12,16 @@ mail:
   password: none
   defaultSender: someemail@somehost.com
 
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/tcrs
+    username: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
 web:
   baseUrl: http://localhost/

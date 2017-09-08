@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by rainerh on 24.04.16.
  */
-public interface ReservationRepository extends CrudRepository<Reservation, String> {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
   List<Reservation> findAll();
 
   List<Reservation> findByStartDatetimeBetween(Instant from, Instant to);

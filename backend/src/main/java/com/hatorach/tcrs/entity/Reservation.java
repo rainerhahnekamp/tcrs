@@ -3,24 +3,29 @@ package com.hatorach.tcrs.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.time.Instant;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * Created by rainerh on 24.04.16.
- */
-@Data
+@Entity
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reservation {
-  @Id
-  private String id;
+@EqualsAndHashCode(callSuper = false)
+public class Reservation extends AbstractPersistable<Long> {
+  @Id @GeneratedValue
+  private Long id;
   private Instant startDatetime;
   private int hours;
   private String courtId;
-  private String clubId;
+  @ManyToOne
+  private Club club;
   private String accessHash;
 }

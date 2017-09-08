@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Created by rainerh on 23.04.17.
  */
-public interface ClubRepository extends CrudRepository<Club, String> {
+public interface ClubRepository extends CrudRepository<Club, Long> {
   List<Club> findAll();
+
+  Club findByUrl(String url);
 }

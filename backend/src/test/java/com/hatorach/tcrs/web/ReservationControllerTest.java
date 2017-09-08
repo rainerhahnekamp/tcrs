@@ -38,10 +38,7 @@ public class ReservationControllerTest {
   @Test
   public void find() throws Exception {
     Instant now = Instant.now();
-    Reservation reservation = new Reservation();
-    reservation.setId("someMongoId");
-    reservation.setHours(5);
-    reservation.setStartDatetime(now);
+    Reservation reservation = Reservation.builder().hours(5).startDatetime(now).build();
     List<Reservation> reservations = new ArrayList<>();
     reservations.add(reservation);
     ReservationRepository repository = mock(ReservationRepository.class);
@@ -59,6 +56,5 @@ public class ReservationControllerTest {
     ReservationResponse reservationResponse = reservationResponses.get(0);
     assertEquals(5, reservationResponse.getHours());
     assertEquals(now, reservationResponse.getStartDatetime());
-    assertEquals("someMongoId", reservationResponse.getId());
   }
 }

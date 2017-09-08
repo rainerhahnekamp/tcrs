@@ -25,6 +25,13 @@ Install angular-cli and the required node modules by
 
     $ npm install -g angular-cli
     $ npm install
+    
+A running mysql instance with , you can setup it very quickly by:
+
+    $ docker run -dit \
+      -e MYSQL_ALLOW_EMPTY_PASSWORD=1 \
+      -e MYSQL_DATABASE=tcrs \
+      --name mysql -p 3306:3306 mysql
 
 ### Run application
 Finally run

@@ -59,7 +59,7 @@ export default class ReservationComponent implements OnInit {
         startDatetime: this.startDateTime.toDate(),
         hours: this.hours.value,
         courtId: this.court.value,
-        clubId: this.urlService.getCurrentClub()
+        clubUrl: this.urlService.getCurrentClub()
       }).then((reservationAddResponse) => {
         this.store.put('reservation', reservationAddResponse);
         this.router.navigate(['/', this.urlService.getCurrentClub(), 'reservation-finished']);

@@ -20,8 +20,8 @@ public class ClubsControllerTest {
   @Test
   public void testList() {
     ModelMapper modelMapper = new ModelMapper();
-    Club club1 = Club.builder().id("club1").name("Club 1").url("club-1").build();
-    Club club2 = Club.builder().id("club2").name("Club 2").url("club-2").build();
+    Club club1 = Club.builder().name("Club 1").url("club-1").build();
+    Club club2 = Club.builder().name("Club 2").url("club-2").build();
 
     ClubRepository clubRepository = mock(ClubRepository.class);
     when(clubRepository.findAll()).thenReturn(Arrays.asList(club1, club2));

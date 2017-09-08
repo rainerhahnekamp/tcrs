@@ -32,13 +32,14 @@ public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
   }
 
   @Override public void onApplicationEvent(ContextRefreshedEvent cre) {
-    Instant monday16 = ZonedDateTime.of(
-      LocalDateTime.of(LocalDate.now().with(DayOfWeek.MONDAY), LocalTime.of(16, 0)),
+    Instant sunday16 = ZonedDateTime.of(
+      LocalDateTime.of(LocalDate.now().with(DayOfWeek.SUNDAY), LocalTime.of(16, 0)),
       ZoneId.of("Europe/Vienna")
     ).toInstant();
 
 
-    Reservation reservation = Reservation.builder().startDatetime(monday16).hours(2).build();
+    Reservation reservation = Reservation.builder()
+      .accessHash("foobar").startDatetime(sunday16).hours(2).build();
     reservationRepository.save(reservation);
 
 

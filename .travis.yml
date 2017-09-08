@@ -13,7 +13,7 @@ before_install:
 
 before_script:
   - echo $JAVA_HOME
-  - npm install -g @angular/cli@1.0.0
+  - npm install -g @angular/cli@1.2.1
   - ./gradlew assemble
 
 script:

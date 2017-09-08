@@ -28,6 +28,7 @@ public class ResponseCreator {
     modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
     ReservationAddResponse returner = modelMapper.map(reservation, ReservationAddResponse.class);
+    returner.setClubId(reservation.getClub().getId());
     returner.setUrl(urlGenerator.getUrl("reservation/edit/" + reservation.getId() + "/"
       + reservation.getAccessHash()));;
 

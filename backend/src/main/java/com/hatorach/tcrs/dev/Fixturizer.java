@@ -2,10 +2,10 @@ package com.hatorach.tcrs.dev;
 
 import com.hatorach.tcrs.entity.Club;
 import com.hatorach.tcrs.entity.Reservation;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hatorach.tcrs.repository.ClubRepository;
+import com.hatorach.tcrs.repository.ReservationRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -23,11 +23,12 @@ import java.time.ZonedDateTime;
  */
 @Service
 public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
-  @Autowired
-  private MongoTemplate mongoTemplate;
+  private ReservationRepository reservationRepository;
+  private ClubRepository clubRepository;
 
-  public void setMongoTemplate(MongoTemplate mongoTemplate) {
-    this.mongoTemplate = mongoTemplate;
+  public Fixturizer(ReservationRepository reservationRepository, ClubRepository clubRepository) {
+    this.reservationRepository = reservationRepository;
+    this.clubRepository = clubRepository;
   }
 
   @Override public void onApplicationEvent(ContextRefreshedEvent cre) {
@@ -35,14 +36,16 @@ public class Fixturizer implements ApplicationListener<ContextRefreshedEvent> {
       LocalDateTime.of(LocalDate.now().with(DayOfWeek.MONDAY), LocalTime.of(16, 0)),
       ZoneId.of("Europe/Vienna")
     ).toInstant();
+
+
     Reservation reservation = Reservation.builder().startDatetime(monday16).hours(2).build();
-    mongoTemplate.save(reservation);
+    reservationRepository.save(reservation);
 
 
     Club tcGeorgeTown = Club.builder().name("TC GeorgeTown").url("tc-georg-town").build();
     Club askoIronCity = Club.builder().name("ASKO IronCity").url("asko-iron-city").build();
-    mongoTemplate.save(tcGeorgeTown);
-    mongoTemplate.save(askoIronCity);
+    clubRepository.save(tcGeorgeTown);
+    clubRepository.save(askoIronCity);
   }
 
 }

@@ -5,7 +5,7 @@ declare module 'endpoints' {
         startDatetime: Date;
         hours: number;
         courtId: string;
-        clubId: string;
+        clubUrl: string;
     }
 
     interface ClubsListResponse {
@@ -14,7 +14,7 @@ declare module 'endpoints' {
     }
 
     interface ReservationAddResponse {
-        clubId: string;
+        clubId: number;
         courtId: string;
         hours: number;
         startDatetime: Date;

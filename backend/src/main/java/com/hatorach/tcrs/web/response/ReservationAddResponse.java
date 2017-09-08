@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Data
 public class ReservationAddResponse {
-  private String clubId;
+  private Long clubId;
   private String courtId;
   private int hours;
   private Instant startDatetime;

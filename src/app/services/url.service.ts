@@ -8,4 +8,5 @@ export class UrlService {
   getCurrentClub(): string {
     return this.activatedRoute.root.firstChild.snapshot.params['club'];
   }
+
 }

@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Reservation} from '../models/Reservation';
-import {ReservationAddRequest, ReservationAddResponse} from 'endpoints';
-import {Endpoint} from '../services/endpoint.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import * as moment from 'moment';
 import {Moment} from 'moment';
@@ -58,7 +55,7 @@ export default class ReservationComponent implements OnInit {
   onSubmit() {
     this.showConfirmationError = true;
     if (this.form.valid) {
-      this.reservationEndpoint.addRegistration({
+      this.reservationEndpoint.addReservation({
         startDatetime: this.startDateTime.toDate(),
         hours: this.hours.value,
         courtId: this.court.value,

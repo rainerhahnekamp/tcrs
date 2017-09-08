@@ -14,9 +14,7 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReservationAddRequest {
-  private Instant startDatetime;
-  private int hours;
-  private String courtId;
-  private String clubId;
+public class ReservationGetRequest {
+  private String id;
+  private String hash;
 }

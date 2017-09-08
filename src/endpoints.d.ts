@@ -8,12 +8,25 @@ declare module 'endpoints' {
         clubId: string;
     }
 
+    interface ReservationGetRequest {
+        id: string;
+        hash: string;
+    }
+
     interface ClubsListResponse {
         url: string;
         name: string;
     }
 
     interface ReservationAddResponse {
+        clubId: string;
+        courtId: string;
+        hours: number;
+        startDatetime: Date;
+        url: string;
+    }
+
+    interface ReservationDetailResponse {
         clubId: string;
         courtId: string;
         hours: number;

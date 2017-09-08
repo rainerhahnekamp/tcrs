@@ -8,7 +8,9 @@ import RegistrationComponent from './registration/registration.component';
 import ReservationComponent from './reservation/reservation.component';
 import RootComponent from './root/root.component';
 import {ReservationResolver} from './services/reservation-resolver.service';
+import ReservationEditComponent from './reservation-edit/reservation-edit.component';
 import ReservationFinishedComponent from './reservation-finished/reservation-finished.component';
+import {ReservationEditResolver} from './services/reservation-edit-resolver.service';
 
 export const routes: Routes = [
   {path: 'club-selection', component: ClubSelectorComponent,
@@ -22,10 +24,16 @@ export const routes: Routes = [
       path: 'reservation/:day/:hour',
       component: ReservationComponent,
       resolve: {courtAvailability: ReservationResolver}
-    }, {
+    },
+    {
       path: 'reservation-finished',
       component: ReservationFinishedComponent
     }
   ]},
+  {
+    path: 'reservation/edit/:id/:hash',
+    component: ReservationEditComponent,
+    resolve: {reservation: ReservationEditResolver}
+  },
   {path: '', redirectTo: 'club-selection', pathMatch: 'full'}
 ];

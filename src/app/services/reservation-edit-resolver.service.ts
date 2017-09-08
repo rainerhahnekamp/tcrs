@@ -1,17 +1,20 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {ReservationAddResponse} from 'endpoints';
 
 @Injectable()
-export class ReservationResolver implements Resolve<CourtAvailability> {
+export class ReservationEditResolver implements Resolve<ReservationAddResponse> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return new Observable<CourtAvailability>(observable => {
-      observable.next({'Suzanne Lenglen': 5, 'Arthur Ashe Stadium': 3, 'Rod Laver Arena': 1});
+    return new Observable<ReservationAddResponse>(observable => {
+      observable.next({
+        clubId: 'Test',
+        courtId: '1',
+        hours: 5,
+        startDatetime: new Date(),
+        url: 'XXX'
+      });
       observable.complete();
     });
   }
-}
-
-export interface CourtAvailability {
-  [court: string]: number;
 }

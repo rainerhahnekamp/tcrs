@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PfuschStore} from '../services/pfusch--store.service';
 import {ReservationAddResponse} from 'endpoints';
-import * as moment from 'moment';
 import {DateParser} from '../services/date-parser.service';
 
 @Component({

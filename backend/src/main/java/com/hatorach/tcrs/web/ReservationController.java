@@ -1,9 +1,12 @@
 package com.hatorach.tcrs.web;
 
+import com.hatorach.tcrs.mail.MailService;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
+import com.hatorach.tcrs.web.request.ReservationGetRequest;
 import com.hatorach.tcrs.web.reservation.adder.ReservationAdder;
 import com.hatorach.tcrs.web.response.ReservationAddResponse;
+import com.hatorach.tcrs.web.response.ReservationDetailResponse;
 import com.hatorach.tcrs.web.response.ReservationResponse;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
@@ -25,11 +28,13 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("reservation")
 public class ReservationController {
+  private MailService mailService;
   private ReservationRepository reservationRepository;
   private ReservationAdder reservationAdder;
 
   @Autowired
-  public ReservationController(ReservationRepository reservationRepository,
+  public ReservationController(MailService mailService,
+                               ReservationRepository reservationRepository,
                                ReservationAdder reservationAdder) {
     this.reservationRepository = reservationRepository;
     this.reservationAdder = reservationAdder;
@@ -41,6 +46,30 @@ public class ReservationController {
   @RequestMapping(value = "add", method = RequestMethod.POST)
   public ReservationAddResponse add(@RequestBody ReservationAddRequest reservationAddRequest) {
     return this.reservationAdder.add(reservationAddRequest);
+  }
+
+  /**
+   * get a reservation.
+   */
+  @RequestMapping(value = "get", method = RequestMethod.POST)
+  public ReservationDetailResponse get(@RequestBody ReservationGetRequest reservationGetRequest) {
+    return null;
+  }
+
+  /**
+   * remove a reservation.
+   */
+  @RequestMapping(value = "remove", method = RequestMethod.POST)
+  public boolean remove(@RequestBody ReservationGetRequest reservationGetRequest) {
+    this.mailService.send(
+      mailBuilder ->
+        mailBuilder
+          .subject("Removed Reservation")
+          .body("Your reservation has been removed.")
+          .recipient("chj.tom@gmail.com")
+          .sender("support@hatorach.at")
+    );
+    return true;
   }
 
   /**

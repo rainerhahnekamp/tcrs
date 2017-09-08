@@ -1,0 +1,23 @@
+<div class="form">
+  <md-card>
+    <md-card-header>Court Reservation</md-card-header>
+    <md-card-content>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+        <div fxLayout="column">
+          <div>{{ startDateTimePretty }}</div>
+          <md-select [(formControl)]="hours">
+            <md-option *ngFor="let hour of hourElements" [value]="hour" >Hours: {{ hour }}</md-option>
+          </md-select>
+
+          <md-select [(formControl)]="court">
+            <md-option *ngFor="let court of courts" [value]="court" >Court: {{ court }}</md-option>
+          </md-select>
+          <md-checkbox formControlName="confirmation">I confirm that the information provided is correct.
+          </md-checkbox>
+          <p class="error-checkbox" [hidden]="!confirmation.hasError('required') || !showConfirmationError">Confirmation must be checked</p>
+          <button type="submit" md-raised-button>OK</button>
+        </div>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>

@@ -8,7 +8,7 @@ export class ReservationEditResolver implements Resolve<ReservationAddResponse> 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return new Observable<ReservationAddResponse>(observable => {
       observable.next({
-        clubId: 'Test',
+        clubId: 1,
         courtId: '1',
         hours: 5,
         startDatetime: new Date(),

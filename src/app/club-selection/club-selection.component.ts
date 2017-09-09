@@ -6,7 +6,7 @@ import {ClubsListResponse} from 'endpoints';
   templateUrl: 'club-selection.html'
 })
 export default class ClubSelectorComponent implements OnInit {
-  private clubs: Array<ClubsListResponse>;
+  public clubs: Array<ClubsListResponse>;
 
   constructor(private route: ActivatedRoute) {}
 

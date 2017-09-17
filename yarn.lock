@@ -35,14 +35,14 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/cli@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.4.0.tgz#c7b6f87c793e8147a4a4f5b472245b942be10556"
+"@angular/cli@1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.4.2.tgz#220a54c7e12303157cc289f4306fa46d080705ac"
   dependencies:
     "@angular-devkit/build-optimizer" "~0.0.18"
     "@angular-devkit/schematics" "~0.0.21"
     "@ngtools/json-schema" "1.1.0"
-    "@ngtools/webpack" "1.7.0"
+    "@ngtools/webpack" "1.7.1"
     "@schematics/angular" "~0.0.30"
     autoprefixer "^6.5.3"
     chalk "^2.0.1"
@@ -178,9 +178,9 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
 
-"@ngtools/webpack@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.7.0.tgz#100b4ba370b3b9f991936f3d5db09cebffe11583"
+"@ngtools/webpack@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.7.1.tgz#383ddd689845cf42fc755975f6440f75535f5016"
   dependencies:
     enhanced-resolve "^3.1.0"
     loader-utils "^1.0.2"
@@ -191,9 +191,13 @@
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.0.33.tgz#bc0b28356af46fe9ec64495588ee61503fd34ce5"
 
-"@types/jasmine@*", "@types/jasmine@2.5.53":
+"@types/jasmine@*":
   version "2.5.53"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.53.tgz#4e0cefad09df5ec48c8dd40433512f84b1568d61"
+
+"@types/jasmine@~2.5.53":
+  version "2.5.54"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.54.tgz#a6b5f2ae2afb6e0307774e8c7c608e037d491c63"
 
 "@types/jasminewd2@~2.0.2":
   version "2.0.2"
@@ -205,9 +209,13 @@
   version "4.14.64"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.64.tgz#979cf3a3d4a368670840bf9b3e448dc33ffe84ee"
 
-"@types/node@^6.0.46", "@types/node@^6.0.60":
+"@types/node@^6.0.46":
   version "6.0.68"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.68.tgz#0c43b6b8b9445feb86a0fbd3457e3f4bc591e66d"
+
+"@types/node@~6.0.60":
+  version "6.0.88"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.88.tgz#f618f11a944f6a18d92b5c472028728a3e3d4b66"
 
 "@types/q@^0.0.32":
   version "0.0.32"
@@ -2920,13 +2928,13 @@ istanbul-reports@^1.1.1:
   dependencies:
     handlebars "^4.0.3"
 
-jasmine-core@2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.6.2.tgz#74ea1f7cf428691af201107d631234027a09daab"
-
 jasmine-core@~2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.5.2.tgz#6f61bd79061e27f43e6f9355e44b3c6cab6ff297"
+
+jasmine-core@~2.6.2:
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.6.4.tgz#dec926cd0a9fa287fb6db5c755fa487e74cecac5"
 
 jasmine-spec-reporter@~4.1.0:
   version "4.1.1"
@@ -4762,12 +4770,6 @@ rsvp@~3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.2.1.tgz#07cb4a5df25add9e826ebc67dcc9fd89db27d84a"
 
-rxjs@5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.2.tgz#2a3236fcbf03df57bae06fd6972fd99e5c08fcf7"
-  dependencies:
-    symbol-observable "^1.0.1"
-
 rxjs@^5.4.2:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.3.tgz#0758cddee6033d68e0fd53676f0f3596ce3d483f"
@@ -5398,10 +5400,6 @@ trim-newlines@^1.0.0:
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
-
-ts-helpers@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/ts-helpers/-/ts-helpers-1.1.2.tgz#fc69be9f1f3baed01fb1a0ef8d4cfe748814d835"
 
 ts-node@~3.2.0:
   version "3.2.2"

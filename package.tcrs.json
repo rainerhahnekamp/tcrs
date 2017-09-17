@@ -1,0 +1,36 @@
+{
+  "name": "tcrs-main",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "postinstall": "npm rebuild node-sass",
+    "gradlecheck": "./gradlew check",
+    "test-sr": "ng test --browsers PhantomJS -sr",
+    "ci": "ng lint && ng test --browsers PhantomJS -sr"
+  },
+  "pre-commit": [
+    "lint",
+    "gradlecheck"
+  ],
+  "pre-push": [
+    "test-sr"
+  ],
+  "dependencies": {
+    "@angular/cdk": "^2.0.0-beta.8",
+    "@angular/flex-layout": "^2.0.0-beta.8",
+    "@angular/material": "^2.0.0-beta.8",
+    "angularfire2": "^4.0.0-rc.0",
+    "firebase": "^4.0.0",
+    "hammerjs": "^2.0.8",
+    "lodash": "4.14.2",
+    "moment": "latest"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.64",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1"
+  }
+}

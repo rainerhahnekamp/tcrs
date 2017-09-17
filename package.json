@@ -12,7 +12,8 @@
     "postinstall": "npm rebuild node-sass",
     "gradlecheck": "./gradlew check",
     "test-sr": "ng test --browsers PhantomJS -sr",
-    "ci": "ng lint && ng test --browsers PhantomJS -sr"
+    "ci": "ng lint && ng test --browsers PhantomJS -sr",
+    "merge-packages": "package-json-merge package.ng.json package.tcrs.json > package.json"
   },
   "private": true,
   "dependencies": {
@@ -59,6 +60,7 @@
     "typescript": "~2.3.3",
     "@types/lodash": "4.14.64",
     "karma-phantomjs-launcher": "^1.0.4",
+    "package-json-merge": "^0.0.1",
     "pre-commit": "^1.2.2",
     "pre-push": "^0.1.1"
   },

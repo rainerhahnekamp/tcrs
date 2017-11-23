@@ -2,10 +2,13 @@ import {Endpoint} from './endpoint.service';
 import {Injectable} from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Router} from '@angular/router';
+import {AppState, State} from '../store/AppState';
+import {Store} from '@ngrx/store';
+import {LoginAction, Logout} from '../store/actions';
 import AuthProvider = firebase.auth.AuthProvider;
+
 /**
  * Main service method for fetching data about the current logged in user.
  *
@@ -24,35 +27,25 @@ export interface UserInfo {
 
 @Injectable()
 export class UserService {
-  private observable: Observable<UserInfo>;
-  private isUserInfoAvailable = false;
-  private user: UserInfo;
 
   constructor(private endpoint: Endpoint, private angularFireAuth: AngularFireAuth,
-              private router: Router) {
-    this.observable = new Observable<UserInfo>(observable => {
-      this.angularFireAuth.authState.subscribe(user => {
-        if (user) {
-          this.user = {name: user.displayName, isLoggedIn: true};
-        } else {
-          this.user = {name: '', isLoggedIn: false};
-        }
-        observable.next(this.user);
-
-        if (this.isUserInfoAvailable && this.user.isLoggedIn) {
-          this.router.navigate(['/welcome']);
-        }
-        this.isUserInfoAvailable = true;
-      });
+              private router: Router, private store: Store<State>) {
+    this.angularFireAuth.authState.subscribe(user => {
+      if (user) {
+        this.store.dispatch(new LoginAction({name: user.displayName, isLoggedIn: true}));
+      } else {
+        this.store.dispatch(new Logout());
+      }
     });
-  }
 
-  getUser(): UserInfo {
-    return this.user;
-  }
-
-  getObservable() {
-    return this.observable;
+    this.store.select(state => state.app.user)
+      .subscribe(userInfo => {
+        if (userInfo.isLoggedIn) {
+          this.router.navigate(['/welcome']);
+        } else {
+          this.router.navigate(['']);
+        }
+      });
   }
 
   loginThirdParty(loginProvider: LoginProvider) {

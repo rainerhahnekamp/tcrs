@@ -40,6 +40,8 @@ import {PfuschStore} from './services/pfusch--store.service';
 import {DateParser} from './services/date-parser.service';
 import ReservationEditComponent from './reservation-edit/reservation-edit.component';
 import {ReservationEditResolver} from './services/reservation-edit-resolver.service';
+import {StoreModule} from '@ngrx/store';
+import {appReducer} from './store/reducer';
 
 @NgModule({
   imports: [
@@ -54,7 +56,8 @@ import {ReservationEditResolver} from './services/reservation-edit-resolver.serv
     ReactiveFormsModule,
     HttpModule,
     MdButtonModule, MdCheckboxModule, MdDatepickerModule, MdInputModule, MdMenuModule, MdSelectModule, MdToolbarModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot(<any>{app: appReducer})
   ],
   declarations: [
     AppComponent, RootComponent, ClubSelectorComponent, CalendarComponent, LoginComponent,

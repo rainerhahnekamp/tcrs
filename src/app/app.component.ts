@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './services/user-service.service';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {State} from './store/AppState';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +12,18 @@ import {Router} from '@angular/router';
 export class AppComponent implements OnInit {
   public isLoggedIn = false;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router,
+              private store: Store<State>) {
   }
 
 
   ngOnInit(): void {
-    this.userService.getObservable().subscribe(
-      userInfo => this.isLoggedIn = userInfo.isLoggedIn
-    );
+    this.store.select(state => state.app.user).subscribe(user => {
+      this.isLoggedIn = user.isLoggedIn;
+    });
   }
 
   logout() {
-    this.userService.logout().then(() => {
-      this.router.navigate(['']);
-    });
+    this.userService.logout();
   }
 }

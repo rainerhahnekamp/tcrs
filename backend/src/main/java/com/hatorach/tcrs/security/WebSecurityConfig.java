@@ -24,7 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // @formatter:off
     http
       .authorizeRequests()
-        .antMatchers("/", "/login**", "/user", "/clubs/**", "/reservation/**", "/test/**")
+        .antMatchers(
+          "/", "/login**", "/user", "/clubs/**", "/reservation/**", "/test/**")
+          .permitAll()
+        .antMatchers("/swagger-ui.html", "/webjars/**", "/swagger-resources/**", "/v2/**")
           .permitAll()
         .anyRequest().authenticated()
       .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

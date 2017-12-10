@@ -4,6 +4,7 @@ import com.hatorach.tcrs.repository.ClubRepository;
 import com.hatorach.tcrs.web.response.ClubsListResponse;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ public class ClubsController {
   /**
    * returns all existing clubs.
    */
-  @RequestMapping("list")
+  @GetMapping("list")
   public List<ClubsListResponse> list() {
     return clubRepository.findAll().stream()
       .map(club -> modelMapper.map(club, ClubsListResponse.class))

@@ -7,6 +7,6 @@ import lombok.Data;
  */
 @Data
 public class ClubsListResponse {
-  String url;
-  String name;
+  private String url;
+  private String name;
 }

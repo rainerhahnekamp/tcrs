@@ -2,6 +2,7 @@ package com.hatorach.tcrs.web;
 
 import com.hatorach.tcrs.mail.MailService;
 import org.springframework.context.annotation.Profile;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class TestController {
    * this method allows a user in the dev profile to send an email to a
    * particular address.
    */
-  @RequestMapping(value = "sendMail", method = RequestMethod.GET)
+  @GetMapping(value = "sendMail")
   public String sendMail(final String recipient, Optional<String> body, Optional<String> subject)
     throws MessagingException {
     mailService.send(mailBuilder ->

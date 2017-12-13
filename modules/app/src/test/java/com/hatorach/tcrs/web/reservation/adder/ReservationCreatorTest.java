@@ -3,7 +3,7 @@ package com.hatorach.tcrs.web.reservation.adder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.Mockito.when;
 
 import com.hatorach.tcrs.entity.Club;
 import com.hatorach.tcrs.entity.Reservation;

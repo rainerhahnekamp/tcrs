@@ -3,7 +3,7 @@ package com.hatorach.tcrs.security.registration;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.Mockito.when;
 
 import com.hatorach.tcrs.security.entity.User;
 import org.junit.Test;

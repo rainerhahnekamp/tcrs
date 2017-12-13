@@ -3,7 +3,7 @@ package com.hatorach.tcrs.web.reservation.adder;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.Mockito.when;
 
 import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.mail.MailService;

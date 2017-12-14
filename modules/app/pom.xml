@@ -19,6 +19,10 @@
     <relativePath>../../</relativePath>
   </parent>
 
+  <properties>
+    <checkstyle.config.location>config/checkstyle/checkstyle.xml</checkstyle.config.location>
+  </properties>
+
 
   <dependencies>
 
@@ -113,10 +117,26 @@
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+
+        <dependencies>
+          <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>7.8.2</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
     </plugins>
   </build>
 </project>

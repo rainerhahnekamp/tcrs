@@ -1,18 +1,18 @@
-<md-toolbar color="primary" class="main-toolbar">
+<mat-toolbar color="primary" class="main-toolbar">
   <span>TCRS</span>
   <span class="fill-remaining-space"></span>
-  <button [hidden]="!isLoggedIn" md-icon-button [mdMenuTriggerFor]="accountMenu">
-    <md-icon>account_circle</md-icon>
+  <button [hidden]="!isLoggedIn" mat-icon-button [matMenuTriggerFor]="accountMenu">
+    <mat-icon>account_circle</mat-icon>
   </button>
-  <md-menu #accountMenu="mdMenu" [overlapTrigger]="false">
-    <button md-menu-item (click)="logout()">
+  <mat-menu #accountMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="logout()">
       <span>Logout</span>
     </button>
-  </md-menu>
+  </mat-menu>
 
   <div [hidden]="isLoggedIn">
     <a routerLink="/login">Login</a>&nbsp;|&nbsp;<a routerLink="registration">Register</a>
   </div>
-</md-toolbar>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

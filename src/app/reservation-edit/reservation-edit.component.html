@@ -1,16 +1,16 @@
 <div class="form">
-  <md-card [hidden]="!hideRemoveInfo">
-    <md-card-header>Court Reservation</md-card-header>
-    <md-card-content>
+  <mat-card [hidden]="!hideRemoveInfo">
+    <mat-card-header>Court Reservation</mat-card-header>
+    <mat-card-content>
       <h1>Edit Zone</h1>
-      <a md-raised-button (click)="remove()">Remove</a>
-    </md-card-content>
-  </md-card>
-  <md-card [hidden]="hideRemoveInfo">
-    <md-card-header>Reservation Remove</md-card-header>
-    <md-card-content>
+      <a mat-raised-button (click)="remove()">Remove</a>
+    </mat-card-content>
+  </mat-card>
+  <mat-card [hidden]="hideRemoveInfo">
+    <mat-card-header>Reservation Remove</mat-card-header>
+    <mat-card-content>
       <h1 [hidden]="!hideRemovedInfo">Removing</h1>
       <h1 [hidden]="hideRemovedInfo">Removed</h1>
-    </md-card-content>
-  </md-card>
+    </mat-card-content>
+  </mat-card>
 </div>

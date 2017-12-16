@@ -1,9 +1,9 @@
 <div class="wrapper" fxLayout="row">
   <div class="left" fxFlex="100px"></div>
   <div class="content" fxFlex>
-    <input [mdDatepicker]="startDatePicker" value="{{ startDay }}">
-    <button [mdDatepickerToggle]="startDatePicker"></button>
-    <md-datepicker #startDatePicker (selectedChanged)="updateView($event)"></md-datepicker>
+    <input [matDatepicker]="startDatePicker" value="{{ startDay }}">
+    <mat-datepicker-toggle [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker (selectedChanged)="updateView($event)"></mat-datepicker>
   </div>
 </div>
 <div class="wrapper" fxLayout="row">

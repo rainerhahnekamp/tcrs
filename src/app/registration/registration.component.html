@@ -1,35 +1,35 @@
 <div class="form">
-  <md-card>
-    <md-card-header>Registration</md-card-header>
-    <md-card-content>
+  <mat-card>
+    <mat-card-header>Registration</mat-card-header>
+    <mat-card-content>
       <p>Tired of filling in registration forms and waiting for activation emails?
         <br><a routerLink="/login">Login with your existing Facebook or Google Account.</a></p>
       <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
         <div fxLayout="column">
 
-          <md-input-container>
+          <mat-input-container>
             <input mdInput formControlName="email" placeholder="EMail">
-            <md-error *ngIf="email.hasError('email')">Invalid email format</md-error>
-          </md-input-container>
+            <mat-error *ngIf="email.hasError('email')">Invalid email format</mat-error>
+          </mat-input-container>
 
 
-          <md-input-container>
+          <mat-input-container>
             <input mdInput type="password" formControlName="password"
                    placeholder="Password">
-            <md-error *ngIf="password.hasError('minlength')">This field requires at least 8 characters</md-error>
-            <md-error *ngIf="password.hasError('passwordComplexity')">The password must contain at least one number and one letter</md-error>
+            <mat-error *ngIf="password.hasError('minlength')">This field requires at least 8 characters</mat-error>
+            <mat-error *ngIf="password.hasError('passwordComplexity')">The password must contain at least one number and one letter</mat-error>
 
-          </md-input-container>
+          </mat-input-container>
 
-          <md-input-container>
+          <mat-input-container>
             <input mdInput type="password" formControlName="passwordConfirmation"
                    placeholder="Confirm password">
-            <md-error *ngIf="passwordConfirmation.hasError('passwordConfirmation')">Passwords do not match</md-error>
-          </md-input-container>
+            <mat-error *ngIf="passwordConfirmation.hasError('passwordConfirmation')">Passwords do not match</mat-error>
+          </mat-input-container>
 
           <button type="submit" md-raised-button>OK</button>
         </div>
       </form>
-    </md-card-content>
-  </md-card>
+    </mat-card-content>
+  </mat-card>
 </div>

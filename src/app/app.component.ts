@@ -12,8 +12,7 @@ import {State} from './store/AppState';
 export class AppComponent implements OnInit {
   public isLoggedIn = false;
 
-  constructor(private userService: UserService, private router: Router,
-              private store: Store<State>) {
+  constructor(private userService: UserService, private store: Store<State>) {
   }
 
 

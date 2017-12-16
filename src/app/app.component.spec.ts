@@ -4,6 +4,8 @@ import {MdMenuModule} from '@angular/material';
 import {UserService} from './services/user-service.service';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 import createSpy = jasmine.createSpy;
 
 describe('AppComponent', () => {
@@ -14,6 +16,10 @@ describe('AppComponent', () => {
     logout: createSpy('logout').and.returnValue(new Promise(resolve => resolve()))
   };
 
+  const store = {
+    select: createSpy('select').and.returnValue(new Observable())
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -21,7 +27,8 @@ describe('AppComponent', () => {
       ],
       imports: [MdMenuModule, RouterTestingModule],
       providers: [
-        {provide: UserService, useValue: userService}
+        {provide: UserService, useValue: userService},
+        {provide: Store, useValue: store}
       ]
     });
   });

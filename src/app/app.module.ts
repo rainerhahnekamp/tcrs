@@ -1,17 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {
-  DateAdapter,
-  MD_DATE_FORMATS,
-  MdButtonModule,
-  MdCheckboxModule,
-  MdDatepickerModule,
-  MdInputModule,
-  MdMenuModule,
-  MdSelectModule,
-  MdToolbarModule
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatIconModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSelectModule, MatToolbarModule
 } from '@angular/material';
 import {AppComponent} from './app.component';
 import {CalendarComponent} from './calendar/calendar.component';
@@ -25,7 +20,6 @@ import {routes} from './routes';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MOMENT_DATE_FORMATS, MomentDateAdapter} from './services/MomentDateAdapter';
 import RootComponent from './root/root.component';
 import ClubSelectorComponent from './club-selection/club-selection.component';
 import LoginComponent from './login/login.component';
@@ -42,6 +36,7 @@ import ReservationEditComponent from './reservation-edit/reservation-edit.compon
 import {ReservationEditResolver} from './services/reservation-edit-resolver.service';
 import {StoreModule} from '@ngrx/store';
 import {appReducer} from './store/reducer';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -54,8 +49,9 @@ import {appReducer} from './store/reducer';
     BrowserAnimationsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    HttpModule,
-    MdButtonModule, MdCheckboxModule, MdDatepickerModule, MdInputModule, MdMenuModule, MdSelectModule, MdToolbarModule,
+    HttpClientModule,
+    MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatIconModule, MatInputModule,
+    MatMenuModule, MatMomentDateModule, MatSelectModule, MatToolbarModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot(<any>{app: appReducer})
   ],
@@ -75,9 +71,7 @@ import {appReducer} from './store/reducer';
     ReservationEditResolver,
     ReservationResolver,
     UrlService,
-    UserService,
-    {provide: DateAdapter, useClass: MomentDateAdapter},
-    {provide: MD_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS}
+    UserService
   ]
 })
 export class AppModule { }

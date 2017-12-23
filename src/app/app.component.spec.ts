@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
 describe('AppComponent', () => {
   const userServiceStub = {logout: () => {}};
   const store = {
-    select: () => Observable.of({isLoggedIn: true})
+    select: (fn) => Observable.of({isLoggedIn: true})
   };
 
   beforeEach(() => {
@@ -33,17 +33,22 @@ describe('AppComponent', () => {
   });
 
   it('should set user info when user info is available', () => {
-    const app = TestBed.createComponent(AppComponent).debugElement.componentInstance;
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
     expect(app.isLoggedIn).toBeFalsy();
+    const spy = spyOn(fixture.debugElement.injector.get(Store), 'select')
+      .and.callThrough();
     app.ngOnInit();
+    const stateSelectorFn: (any) => any = spy.calls.mostRecent().args[0];
+    const storeSelectorReturner = stateSelectorFn({app: {user: 'foo'}});
     expect(app.isLoggedIn).toBeTruthy();
+    expect(storeSelectorReturner).toBe('foo');
   });
 
   it('should redirect when click on logout', (inject([Router], router => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    const userService = fixture.debugElement.injector.get(UserService);
-    const spy = spyOn(userService, 'logout');
+    const spy = spyOn(fixture.debugElement.injector.get(UserService), 'logout');
     app.logout();
     expect(spy).toHaveBeenCalled();
   })));

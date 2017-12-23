@@ -1,23 +1,16 @@
-import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {MdMenuModule} from '@angular/material';
+import {MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import {UserService} from './services/user-service.service';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
-import createSpy = jasmine.createSpy;
 
 describe('AppComponent', () => {
-  let callback: (userInfo) => void;
-  const subscribeFn = fn => callback = fn;
-  const userService = {
-    getObservable: createSpy('observable').and.returnValue({subscribe: subscribeFn}),
-    logout: createSpy('logout').and.returnValue(new Promise(resolve => resolve()))
-  };
-
+  const userServiceStub = {logout: () => {}};
   const store = {
-    select: createSpy('select').and.returnValue(new Observable())
+    select: () => Observable.of({isLoggedIn: true})
   };
 
   beforeEach(() => {
@@ -25,9 +18,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      imports: [MdMenuModule, RouterTestingModule],
+      imports: [MatMenuModule, MatIconModule, MatToolbarModule, RouterTestingModule],
       providers: [
-        {provide: UserService, useValue: userService},
+        {provide: UserService, useValue: userServiceStub},
         {provide: Store, useValue: store}
       ]
     });
@@ -43,17 +36,16 @@ describe('AppComponent', () => {
     const app = TestBed.createComponent(AppComponent).debugElement.componentInstance;
     expect(app.isLoggedIn).toBeFalsy();
     app.ngOnInit();
-    callback({isLoggedIn: true});
     expect(app.isLoggedIn).toBeTruthy();
   });
 
-  it('should redirect when click on logout', fakeAsync(inject([Router], router => {
+  it('should redirect when click on logout', (inject([Router], router => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    const spy = spyOn(router, 'navigate');
+    const userService = fixture.debugElement.injector.get(UserService);
+    const spy = spyOn(userService, 'logout');
     app.logout();
-    tick();
-    expect(spy).toHaveBeenCalledWith(['']);
+    expect(spy).toHaveBeenCalled();
   })));
 
   it('should initiate the component', () => {

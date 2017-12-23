@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './services/user-service.service';
-import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {State} from './store/AppState';
 

@@ -26,3 +26,5 @@ gradle-app.setting
 /.idea
 /src/main/main.iml
 /coverage/
+target
+modules/app/target

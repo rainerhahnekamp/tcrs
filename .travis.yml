@@ -1,6 +1,9 @@
 language: node_js
 dist: trusty
 
+services:
+  - docker
+
 addons:
   sonarcloud:
     organization: rainerhahnekamp-github
@@ -8,20 +11,18 @@ addons:
       secure: 4e891e5de78c822bce4d9c2da399fcb017183316
 
 before_install:
+  - docker run -it -u `id -u $USER` --rm -v $PWD:/app -w /app node:8.9.3 yarn --cache-folder /app/.yarn-cache
+  - docker run -it -u `id -u $USER` --rm -v $PWD:/app -w /app node:8.9.3 npm run ci
   - sudo apt-get install oracle-java8-set-default
   - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - 'curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.0.0' #travis issue 7566
-  - export PATH="$HOME/.yarn/bin:$PATH" # travis issue 7566
 
 before_script:
   - echo $JAVA_HOME
-  - npm install -g @angular/cli@1.2.1
   - ./gradlew assemble
 
 script:
   - ./gradlew check
   - ./gradlew sonarqube
-  - npm run ci
 
 
 before_cache:
@@ -33,5 +34,5 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.sonar/cache'
     - '$HOME/.gradle'
+    - '.yarn-cache'
     - 'node_modules'
-  yarn: true

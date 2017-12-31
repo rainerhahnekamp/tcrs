@@ -19,11 +19,6 @@
     <relativePath>../../</relativePath>
   </parent>
 
-  <properties>
-    <checkstyle.config.location>config/checkstyle/checkstyle.xml</checkstyle.config.location>
-  </properties>
-
-
   <dependencies>
 
     <dependency>
@@ -42,6 +37,12 @@
       <artifactId>springfox-swagger-ui</artifactId>
       <version>${springfox-swagger-ui.version}</version>
     </dependency>
+
+    <!--<dependency>-->
+    <!--<groupId>io.swagger</groupId>-->
+    <!--<artifactId>swagger-spring</artifactId>-->
+    <!--<version>1.0.0</version>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>mysql</groupId>
@@ -117,19 +118,29 @@
 
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
-
+        <configuration>
+          <configLocation>google_checks.xml</configLocation>
+          <violationSeverity>warning</violationSeverity>
+          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+        </configuration>
         <dependencies>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>7.8.2</version>
+            <version>8.6</version>
           </dependency>
         </dependencies>
+        <executions>
+          <execution>
+            <id>check-style</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -139,4 +150,5 @@
 
     </plugins>
   </build>
+
 </project>

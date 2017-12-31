@@ -13,6 +13,7 @@
 
   <modules>
     <module>./modules/app</module>
+    <!--<module>./modules/endpoints</module>-->
   </modules>
 
   <parent>
@@ -30,5 +31,17 @@
     <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
     <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
   </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.17</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>

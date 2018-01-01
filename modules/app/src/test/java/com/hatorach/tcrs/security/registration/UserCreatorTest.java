@@ -13,12 +13,12 @@ public class UserCreatorTest {
   public void createUser() {
     User user = new UserCreator().create("foo@bar.com", "foobar");
     assertThat(user, allOf(
-      hasProperty("email", is("foo@bar.com")),
-      hasProperty("password", is("foobar")),
-      hasProperty("regular", is(true)),
-      hasProperty("facebook", is(false)),
-      hasProperty("google", is(false)),
-      hasProperty("registrationStatus", is(RegistrationStatus.PENDINGACTIVATION))
+        hasProperty("email", is("foo@bar.com")),
+        hasProperty("password", is("foobar")),
+        hasProperty("regular", is(true)),
+        hasProperty("facebook", is(false)),
+        hasProperty("google", is(false)),
+        hasProperty("registrationStatus", is(RegistrationStatus.PENDINGACTIVATION))
     ));
   }
 }

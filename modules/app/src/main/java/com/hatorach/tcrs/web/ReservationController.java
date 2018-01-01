@@ -8,6 +8,9 @@ import com.hatorach.tcrs.web.reservation.adder.ReservationAdder;
 import com.hatorach.tcrs.web.response.ReservationAddResponse;
 import com.hatorach.tcrs.web.response.ReservationDetailResponse;
 import com.hatorach.tcrs.web.response.ReservationResponse;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by rainerh on 24.04.16.
@@ -36,9 +34,9 @@ public class ReservationController {
   private ReservationAdder reservationAdder;
 
   @Autowired
-  public ReservationController(MailService mailService,
-                               ReservationRepository reservationRepository,
-                               ReservationAdder reservationAdder) {
+  public ReservationController(
+      MailService mailService, ReservationRepository reservationRepository,
+      ReservationAdder reservationAdder) {
     this.reservationRepository = reservationRepository;
     this.reservationAdder = reservationAdder;
   }
@@ -64,14 +62,11 @@ public class ReservationController {
    */
   @PostMapping(value = "remove")
   public boolean remove(@RequestBody ReservationGetRequest reservationGetRequest) {
-    this.mailService.send(
-      mailBuilder ->
-        mailBuilder
-          .subject("Removed Reservation")
-          .body("Your reservation has been removed.")
-          .recipient("chj.tom@gmail.com")
-          .sender("support@hatorach.at")
-    );
+    this.mailService.send(mailBuilder ->
+        mailBuilder.subject("Removed Reservation")
+            .body("Your reservation has been removed.")
+            .recipient("chj.tom@gmail.com")
+            .sender("support@hatorach.at"));
     return true;
   }
 
@@ -80,14 +75,12 @@ public class ReservationController {
    */
   @GetMapping("find/:from/:to")
   public List<ReservationResponse> find(
-    @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date from,
-    @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date to
-  ) {
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date from,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date to) {
     ModelMapper modelMapper = new ModelMapper();
-    return reservationRepository
-      .findByStartDatetimeBetween(from.toInstant(), to.toInstant())
-      .stream()
-      .map(reservation -> modelMapper.map(reservation, ReservationResponse.class))
-      .collect(Collectors.toList());
+    return reservationRepository.findByStartDatetimeBetween(from.toInstant(), to.toInstant())
+        .stream()
+        .map(reservation -> modelMapper.map(reservation, ReservationResponse.class))
+        .collect(Collectors.toList());
   }
 }

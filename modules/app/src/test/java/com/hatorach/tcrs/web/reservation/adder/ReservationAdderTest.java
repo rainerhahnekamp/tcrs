@@ -25,8 +25,8 @@ public class ReservationAdderTest {
     when(reservationCreator.create(request)).thenReturn(reservation);
     MailService mailService = mock(MailService.class);
     ResponseCreator responseCreator = mock(ResponseCreator.class);
-    ReservationAdder adder = new ReservationAdder(
-      repository, reservationCreator, responseCreator, mailService);
+    ReservationAdder adder =
+        new ReservationAdder(repository, reservationCreator, responseCreator, mailService);
 
     adder.add(request);
 

@@ -32,11 +32,9 @@ public class ReservationCreator {
     modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     Reservation reservation = modelMapper.map(request, Reservation.class);
     reservation.setClub(clubRepository.findByUrl(request.getClubUrl()));
-    reservation.setAccessHash(
-      new RandomStringGenerator.Builder()
-        .withinRange('0', 'z')
-        .filteredBy(LETTERS, DIGITS).build()
-        .generate(20));
+    reservation.setAccessHash(new RandomStringGenerator.Builder()
+        .withinRange('0', 'z').filteredBy(LETTERS, DIGITS)
+        .build().generate(20));
     return reservation;
   }
 }

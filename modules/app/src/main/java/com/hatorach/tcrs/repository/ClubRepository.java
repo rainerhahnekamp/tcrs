@@ -1,9 +1,8 @@
 package com.hatorach.tcrs.repository;
 
 import com.hatorach.tcrs.entity.Club;
-import org.springframework.data.repository.CrudRepository;
-
 import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * Created by rainerh on 23.04.17.

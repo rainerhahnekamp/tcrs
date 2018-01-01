@@ -1,14 +1,13 @@
 package com.hatorach.tcrs.security.entity;
 
 import com.hatorach.tcrs.security.registration.RegistrationStatus;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  * Created by rainerh on 23.06.17.

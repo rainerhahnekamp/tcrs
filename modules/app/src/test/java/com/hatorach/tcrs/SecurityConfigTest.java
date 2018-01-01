@@ -19,9 +19,8 @@ public class SecurityConfigTest {
     User mrx = new User();
     when(userRepository.findByEmail("foo@bar.com")).thenReturn(mrx);
     assertEquals(
-      mrx,
-      new SecurityConfig().getUserFind(userRepository).findByEmail("foo@bar.com").get()
-    );
+        mrx,
+        new SecurityConfig().getUserFind(userRepository).findByEmail("foo@bar.com").get());
   }
 
   @Test

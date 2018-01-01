@@ -1,7 +1,6 @@
 package com.hatorach.tcrs.security.registration;
 
 import com.hatorach.tcrs.security.entity.User;
-
 import java.util.Optional;
 
 /**

@@ -1,13 +1,11 @@
 package com.hatorach.tcrs;
 
 import com.hatorach.tcrs.repository.UserRepository;
-import com.hatorach.tcrs.security.entity.User;
 import com.hatorach.tcrs.security.registration.UserFinder;
 import com.hatorach.tcrs.security.registration.UserPersister;
+import java.util.Optional;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Optional;
 
 /**
  * Created by rainerh on 01.07.17.

@@ -6,9 +6,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.hatorach.tcrs.security.entity.User;
-import org.junit.Test;
-
 import java.util.Optional;
+import org.junit.Test;
 
 /**
  * Created by rainerh on 01.07.17.
@@ -26,7 +25,7 @@ public class RegistrationServiceTest {
     when(creator.create(any(), any())).thenReturn(user);
 
     new RegistrationService(check, persister, finder, creator)
-      .register("somebody@host.com",  "", "");
+        .register("somebody@host.com",  "", "");
 
     verify(check).allowPassword("","");
     verify(creator).create(any(), any());

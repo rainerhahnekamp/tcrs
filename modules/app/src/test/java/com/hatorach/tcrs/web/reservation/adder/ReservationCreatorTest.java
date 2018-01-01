@@ -10,9 +10,8 @@ import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.matchers.RegexMatcher;
 import com.hatorach.tcrs.repository.ClubRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
-import org.junit.Test;
-
 import java.time.Instant;
+import org.junit.Test;
 
 /**
  * Created by chjtom on 12.08.17.
@@ -22,8 +21,10 @@ public class ReservationCreatorTest {
   @Test
   public void testCreate() {
     Instant now = Instant.now();
-    ReservationAddRequest addRequest = ReservationAddRequest.builder().startDatetime(now)
-      .clubUrl("utc-st-georgen").hours(5).courtId("suzanne-langlene").build();
+    ReservationAddRequest addRequest = ReservationAddRequest.builder()
+        .startDatetime(now).clubUrl("utc-st-georgen")
+        .hours(5).courtId("suzanne-langlene")
+        .build();
     Club club = Club.builder().name("utc-st-georgen").build();
     ClubRepository repository = mock(ClubRepository.class);
     when(repository.findByUrl("utc-st-georgen")).thenReturn(club);

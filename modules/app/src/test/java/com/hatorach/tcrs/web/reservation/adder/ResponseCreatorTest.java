@@ -7,9 +7,8 @@ import com.hatorach.tcrs.entity.Reservation;
 import com.hatorach.tcrs.web.UrlGenerator;
 import com.hatorach.tcrs.web.WebProperties;
 import com.hatorach.tcrs.web.response.ReservationAddResponse;
-import org.junit.Test;
-
 import java.time.Instant;
+import org.junit.Test;
 
 /**
  * Created by chjtom on 12.08.17.
@@ -26,8 +25,13 @@ public class ResponseCreatorTest {
 
 
     Instant now = Instant.now();
-    Reservation reservation = Reservation.builder().courtId("suzanne-langlene")
-      .club(stGeorgen).hours(5).startDatetime(now).accessHash("TESTHASH").build();
+    Reservation reservation = Reservation.builder()
+        .courtId("suzanne-langlene")
+        .club(stGeorgen)
+        .hours(5)
+        .startDatetime(now)
+        .accessHash("TESTHASH")
+        .build();
 
     ResponseCreator creator = new ResponseCreator(urlGenerator);
     ReservationAddResponse response = creator.create(reservation);

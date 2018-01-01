@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ResponseCreator {
-  private  UrlGenerator urlGenerator;
+  private UrlGenerator urlGenerator;
 
   @Autowired
   public ResponseCreator(UrlGenerator urlGenerator) {
@@ -29,8 +29,9 @@ public class ResponseCreator {
 
     ReservationAddResponse returner = modelMapper.map(reservation, ReservationAddResponse.class);
     returner.setClubId(reservation.getClub().getId());
-    returner.setUrl(urlGenerator.getUrl("reservation/edit/" + reservation.getId() + "/"
-      + reservation.getAccessHash()));;
+    returner.setUrl(urlGenerator
+        .getUrl("reservation/edit/" + reservation.getId() + "/" + reservation.getAccessHash()));
+    ;
 
     return returner;
   }

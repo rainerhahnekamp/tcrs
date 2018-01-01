@@ -1,13 +1,12 @@
 package com.hatorach.tcrs.mail;
 
+import java.util.function.UnaryOperator;
+import javax.mail.internet.MimeMessage;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import java.util.function.UnaryOperator;
-import javax.mail.internet.MimeMessage;
 
 
 /**

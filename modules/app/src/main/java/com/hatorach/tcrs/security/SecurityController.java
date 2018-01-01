@@ -22,8 +22,8 @@ public class SecurityController {
   @PostMapping(name = "register")
   public boolean register(@RequestBody RegistrationRequest registrationRequest) {
     registrationService.register(
-      registrationRequest.getEmail(), registrationRequest.getPassword(),
-      registrationRequest.getPasswordConfirmation());
+        registrationRequest.getEmail(), registrationRequest.getPassword(),
+        registrationRequest.getPasswordConfirmation());
     return true;
   }
 }

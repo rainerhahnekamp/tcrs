@@ -8,7 +8,7 @@ import org.junit.Test;
 public class MailServiceTest {
   @Test
   public void testMailService() {
-    
+
   }
 
 }

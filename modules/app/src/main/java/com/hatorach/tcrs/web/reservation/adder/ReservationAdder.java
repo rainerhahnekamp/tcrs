@@ -5,7 +5,6 @@ import com.hatorach.tcrs.mail.MailService;
 import com.hatorach.tcrs.repository.ReservationRepository;
 import com.hatorach.tcrs.web.request.ReservationAddRequest;
 import com.hatorach.tcrs.web.response.ReservationAddResponse;
-import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +22,9 @@ public class ReservationAdder {
    * Constructor.
    */
   @Autowired
-  public ReservationAdder(ReservationRepository reservationRepository,
-                          ReservationCreator reservationCreator,
-                          ResponseCreator responseCreator,
-                          MailService mailService
-                          ) {
+  public ReservationAdder(
+      ReservationRepository reservationRepository, ReservationCreator reservationCreator,
+      ResponseCreator responseCreator, MailService mailService) {
     this.reservationRepository = reservationRepository;
     this.mailService = mailService;
     this.reservationCreator = reservationCreator;
@@ -38,12 +35,11 @@ public class ReservationAdder {
    * Logic for adding a new reservation.
    */
   public ReservationAddResponse add(ReservationAddRequest reservationAddRequest) {
-    Reservation reservation = reservationRepository.save(reservationCreator
-      .create(reservationAddRequest));
+    Reservation reservation = reservationRepository
+        .save(reservationCreator.create(reservationAddRequest));
 
-    this.mailService.send(mailBuilder -> mailBuilder.recipient("office@hatorach.com")
-      .subject("TCRS")
-      .body("TESTMSG"));
+    this.mailService.send(mailBuilder ->
+        mailBuilder.recipient("office@hatorach.com").subject("TCRS").body("TESTMSG"));
 
     return this.responseCreator.create(reservation);
   }

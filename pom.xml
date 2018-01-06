@@ -13,7 +13,7 @@
 
   <modules>
     <module>./modules/app</module>
-    <!--<module>./modules/endpoints</module>-->
+    <module>./modules/endpoint</module>
   </modules>
 
   <parent>
@@ -42,6 +42,32 @@
         </plugin>
       </plugins>
     </pluginManagement>
-  </build>
 
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>google_checks.xml</configLocation>
+          <violationSeverity>warning</violationSeverity>
+          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>8.7</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>check-style</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

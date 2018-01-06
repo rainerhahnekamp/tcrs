@@ -13,7 +13,8 @@
     "backendcheck": "./mvnw checkstyle:check",
     "test-sr": "ng test --browsers PhantomJS -sr",
     "ci": "ng lint && ng test --browsers PhantomJS -sr",
-    "merge-packages": "package-json-merge package.ng.json package.tcrs.json > package.json"
+    "merge-packages": "package-json-merge package.ng.json package.tcrs.json > package.json",
+    "yarn": "docker run -u `id -u $USER` --rm -v $PWD:/app -w /app node:8.9.3 yarn --cache-folder /app/.yarn-cache"
   },
   "private": true,
   "dependencies": {

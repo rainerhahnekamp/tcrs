@@ -1,0 +1,6 @@
+{
+  "java8": true,
+  "title": "TCRS Endpoints",
+  "apiPackage": "com.hatorach.tcrs.endpoint",
+  "interfaceOnly": true
+}

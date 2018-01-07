@@ -1,6 +1,7 @@
 package com.hatorach.tcrs;
 
 import com.hatorach.tcrs.misc.IgnoreInTestCoverage;
+import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -11,8 +12,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 @IgnoreInTestCoverage
 public class Main {
+  /**
+   * Constructor.
+   */
   public static void main(String[] args) {
     String profile = System.getenv().getOrDefault("spring.profiles.active", "dev");
-    new SpringApplicationBuilder(Main.class).profiles("dev").run();
+    System.out.println(profile);
+    new SpringApplicationBuilder(Main.class).profiles("dev").bannerMode(Banner.Mode.OFF).run();
   }
 }

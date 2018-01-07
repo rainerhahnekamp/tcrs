@@ -12,8 +12,8 @@
   <description>Tennis Court Reservation System</description>
 
   <modules>
-    <module>./modules/app</module>
-    <module>./modules/endpoint</module>
+    <module>modules/endpoint</module>
+    <module>modules/app</module>
   </modules>
 
   <parent>
@@ -24,9 +24,11 @@
   </parent>
 
   <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
 
     <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
     <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>

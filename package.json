@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "npm rebuild node-sass",
-    "backendcheck": "./mvnw checkstyle:check",
+    "backendcheck": "mvnw checkstyle:check",
     "test-sr": "ng test --browsers PhantomJS -sr",
     "ci": "ng lint && ng test --browsers PhantomJS -sr",
     "merge-packages": "package-json-merge package.ng.json package.tcrs.json > package.json",

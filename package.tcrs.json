@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json",
     "postinstall": "npm rebuild node-sass",
-    "backendcheck": "./mvnw checkstyle:check",
+    "backendcheck": "mvnw checkstyle:check",
     "test": "npx ng test --code-coverage",
     "test-sr": "ng test --browsers PhantomJS -sr",
     "ci": "ng lint && ng test --browsers PhantomJS -sr",

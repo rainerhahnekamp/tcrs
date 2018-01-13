@@ -8,6 +8,7 @@ import {
   MatMenuModule,
   MatSelectModule, MatToolbarModule
 } from '@angular/material';
+import {ApiModule} from '../api/api.module';
 import {AppComponent} from './app.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -40,12 +41,13 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
-    BrowserModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyDEKMK7Rm1Tp8DELVWOSzGNC7s1o23jS80',
       authDomain: 'tcrs-dev.firebaseapp.com'
     }),
     AngularFireAuthModule,
+    ApiModule,
+    BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     ReactiveFormsModule,

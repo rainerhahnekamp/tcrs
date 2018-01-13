@@ -38,7 +38,8 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/src/api/**"
     },
     {
       "project": "src/tsconfig.spec.json"

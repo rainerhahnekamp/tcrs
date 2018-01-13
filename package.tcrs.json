@@ -4,20 +4,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "ng serve --proxy-config proxy.conf.json",
-    "postinstall": "npm rebuild node-sass",
-    "backendcheck": "mvnw checkstyle:check",
-    "test": "npx ng test --code-coverage",
-    "test-sr": "ng test --browsers PhantomJS -sr",
+    "backendcheck": "./mvnw checkstyle:check",
     "ci": "ng lint && ng test --browsers PhantomJS -sr",
     "merge-packages": "package-json-merge package.ng.json package.tcrs.json > package.json",
+    "postinstall": "npm rebuild node-sass",
+    "prepush": "npm-run-all lint backendcheck test-sr",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "test": "npx ng test --code-coverage",
+    "test-sr": "ng test --browsers PhantomJS -sr",
     "yarn": "docker run -u `id -u $USER` -it --rm -v $PWD:/app -w /app node:8.9.3 yarn --cache-folder /app/.yarn-cache"
   },
-  "pre-push": [
-    "lint",
-    "backendcheck",
-    "test-sr"
-  ],
   "dependencies": {
     "@angular/cdk": "5.0.1",
     "@angular/flex-layout": "2.0.0-beta.12",
@@ -32,8 +28,9 @@
   },
   "devDependencies": {
     "@types/lodash": "4.14.91",
+    "husky": "0.14.3",
     "karma-phantomjs-launcher": "^1.0.4",
-    "package-json-merge": "^0.0.1",
-    "pre-push": "^0.1.1"
+    "npm-run-all": "^4.1.2",
+    "package-json-merge": "^0.0.1"
   }
 }

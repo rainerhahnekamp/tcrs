@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 
 import com.hatorach.tcrs.entity.Club;
 import com.hatorach.tcrs.repository.ClubRepository;
-import com.hatorach.tcrs.web.response.ClubsListResponse;
+import io.swagger.model.ClubsListResponse;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
@@ -28,7 +28,8 @@ public class ClubsControllerTest {
     List<ClubsListResponse> clubs = ClubsController
         .builder()
         .clubRepository(clubRepository).modelMapper(modelMapper)
-        .build().list();
+        .build().listUsingGET().getBody();
+
     assertEquals("Club 1", clubs.get(0).getName());
     assertEquals("club-1", clubs.get(0).getUrl());
     assertEquals("Club 2", clubs.get(1).getName());

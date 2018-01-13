@@ -17,7 +17,6 @@ public class Main {
    */
   public static void main(String[] args) {
     String profile = System.getenv().getOrDefault("spring.profiles.active", "dev");
-    System.out.println(profile);
     new SpringApplicationBuilder(Main.class).profiles("dev").bannerMode(Banner.Mode.OFF).run();
   }
 }
